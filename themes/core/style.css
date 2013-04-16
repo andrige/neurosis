@@ -19,3 +19,6 @@ body{
    background-color:#fff;
    padding: 1em;
 }
+
+.validation-failed{border:2px solid red;}
+.validation-message{color:red;font-size:smaller;}

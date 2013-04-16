@@ -8,31 +8,43 @@
   ========================================================================*/
 /**
  * @package NeurosisCore
+ *
+ * This is a multiclass of sorts. It extends 'CObject.php' which holds an instance of '$ne'.
+ * This extension therefore allows us to use '$this->' rather than '$ne' all the time.
+ * It also uses the 'IController' interface for its "skeleton" of course.
  */
-class CCDeveloper implements IController {
+class CCDeveloper extends CObject implements IController {
 
-  /*==========================================================================
-    
-    Implementing interface IController. All controllers must have an index action. 
-    
-    ========================================================================*/
+  /**------------------------------------------------------
+   *| Constructor
+   * ------------------------------------------------------
+   * Performs the '__construct' in CObject.php which in turn creates the proper instance that allows us to use '$this' 
+   *-in substitute for storing the '$ne' instance every time.
+   */
+  public function __construct() {
+    parent::__construct();
+  }
+
+  /**------------------------------------------------------
+   *| Implementing interface IController. All controllers must have an index action.
+   * ------------------------------------------------------
+   */
   public function Index() {  
     $this->Menu();
   }
 
 
-  /*==========================================================================
-    
-    Create a list of links in the supported ways.
-    
-    The CRequest can store a setting which decides if:
-    $ne->request->cleanUrl = true;             http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/developer/links
-    $ne->request->querystringUrl = true;     http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/index.php?q=developer/links
-    Both false                                            http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/index.php/developer/links
-    
-    All these links be read and understood by our page however, it's just a matter of user choice.
-    
-    ========================================================================*/
+  /**------------------------------------------------------
+   *| Create a list of links in the supported ways.
+   *| 
+   *| The CRequest can store a setting which decides if:
+   *| $ne->request->cleanUrl = true;             http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/developer/links
+   *| $ne->request->querystringUrl = true;     http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/index.php?q=developer/links
+   *| Both false                                            http://www.student.bth.se/~mblu08/phpmvc/kmom02_lydia/index.php/developer/links
+   *| 
+   *| All these links be read and understood by our page however, it's just a matter of user choice.
+   * ------------------------------------------------------
+   */
   public function Links() {  
     $this->Menu();
     
@@ -67,11 +79,10 @@ EOD;
   }
 
 
-  /*==========================================================================
-    
-    Create a method that shows the menu, same for all methods
-    
-    ========================================================================*/
+  /**------------------------------------------------------
+   *| Create a method that shows the menu, same for all methods
+   * ------------------------------------------------------
+   */
   private function Menu() {  
     $ne = CNeurosis::Instance();
     $menu = array('developer', 'developer/index', 'developer/links');
@@ -91,4 +102,18 @@ $html
 EOD;
   }
   
+  /**------------------------------------------------------
+   *| Display all items of the CObject
+   *| Prints out only the HTML tags at 'htmlentities'.
+   * ------------------------------------------------------
+   */
+  public function DisplayObject() {
+    $this->Menu();
+
+    $this->data['main'] .= <<<EOD
+<h2>Dumping content of CDeveloper</h2>
+<p>Here is the content of the controller, including properties from CObject which holds access to common resources in CNeurosis.</p>
+EOD;
+    $this->data['main'] .= '<pre>' . htmlentities(print_r($this, true)) . '</pre>';
+  }
 } 

@@ -5,11 +5,12 @@
 
 // 'define()' creates a named constant. In this case it will be global. But it can be made local if need be.
 // http://www.php.net/manual/en/function.define.php
-define('LYDIA_INSTALL_PATH', dirname(__FILE__));
-define('LYDIA_SITE_PATH', LYDIA_INSTALL_PATH . '/site');
+
+define('NEUROSIS_INSTALL_PATH', dirname(__FILE__));
+define('NEUROSIS_SITE_PATH', NEUROSIS_INSTALL_PATH . '/site');
 
 // Make sure that we have this boostrap.php file in the right place. Otherwise fatal error.
-require(LYDIA_INSTALL_PATH.'/src/CNeurosis/bootstrap.php');
+require(NEUROSIS_INSTALL_PATH.'/src/bootstrap.php');
 
 $ne = CNeurosis::Instance();
 

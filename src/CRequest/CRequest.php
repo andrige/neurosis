@@ -6,6 +6,9 @@
 * 
 * This is called from CNeurosis::FrontControllerRoute(). It's purpose is to store the query
 * -in such a way that it's available to our classes. I think.
+* 
+* Important! You must change the 'RewriteBase' in .htaccess to match your directory (at least for bth.se's server).
+* TBA This entire document is mysterious and shrouded in WTFery. Proceed with caution and bring lots of comments with you.
 */
 class CRequest {
   /*==========================================================================
@@ -65,7 +68,7 @@ class CRequest {
       
       NEW: Remove the ?-part from the query when analysing controller/metod/arg1/arg2*/
      
-     // If '?' exists in string: return int. If no '?' exists in string: return FALSE.
+     // [[If '?' exists in string => RETURN int. If no '?' exists in string => RETURN false]]
     $queryPos = strpos($request, '?');
     if($queryPos !== false) {                 // If '$queryPos' is not set to FALSE, proceed.
       $request = substr($request, 0, $queryPos);    // Get only the request part of the string. TBA What does the give us?
@@ -114,15 +117,15 @@ class CRequest {
       
       Store it. Note that these variables are created here as well.*/
     
-    $this->base_url      = rtrim($baseUrl, '/') . '/';
-    $this->current_url  = $currentUrl;
-    $this->request_uri      = $_SERVER['REQUEST_URI'];
-    $this->script_name     = $_SERVER['SCRIPT_NAME'];
-    //$this->query              = $query;
-    $this->splits               = $splits;
-    $this->controller         = $controller;
-    $this->method            = $method;
-    $this->arguments       = $arguments;
+    $this->base_url           = rtrim($baseUrl, '/') . '/'; // 'http://www.student.bth.se/~mblu08/phpmvc/kmom03_neurosis/'
+    $this->current_url        = $currentUrl;                // 'http://www.student.bth.se/~mblu08/phpmvc/kmom03_neurosis/guestbook'
+    $this->request_uri        = $_SERVER['REQUEST_URI'];    // '//~mblu08/phpmvc/kmom03_neurosis/guestbook'
+    $this->script_name        = $_SERVER['SCRIPT_NAME'];    // '/~mblu08/phpmvc/kmom03_neurosis/index.php'
+    //$this->query            = $query;
+    $this->splits             = $splits;                    // Array with the request ([0] => guestbook, [1] => handler, [2] => doAdd)
+    $this->controller         = $controller;                // 'guestbook' (Referencing 'Guestbook.php')
+    $this->method             = $method;                    // 'handler'   (-||- Guestbook::Handler)
+    $this->arguments          = $arguments;                 // 'doAdd'     (-||- Guestbook::Handler(doAdd))
     
     }
     
@@ -156,13 +159,12 @@ class CRequest {
   
  
   
-  /*==========================================================================
-  
-  Get the url to the current page
-  
-  TBA!!! WHAT DOES '@$_SERVER' MEAN.
-  
-  ========================================================================*/
+  /**-------------------------------------------------------------------------
+   * Get the url to the current page
+   * 
+   * TBA!!! WHAT DOES '@$_SERVER' MEAN.
+   *--------------------------------------------------------------------------
+   */
   public function GetCurrentUrl() {
     $url = "http";
     $url .= (@$_SERVER["HTTPS"] == "on") ? 's' : '';    // If we have HTTPS(ecure) then write out 's'. Uh...
@@ -173,22 +175,66 @@ class CRequest {
     return $url;
   }
   
-  /*==========================================================================
+  /**-------------------------------------------------------------------------
+   * Create a url in the way it should be created
+   *
+   * See CCDeveloper.php for this in use.
+   *--------------------------------------------------------------------------
+   */
     
-    Create a url in the way it should be created
+  public function CreateUrl($url=null, $method=null, $arguments=null) {
+    /*--------------------------------------------------------------------------
+      
+      If fully qualified link (as in '$url' is filled in) just leave it*/
+      
+    /*
+    TBA: [[If we've input an url AND there's '://' in the url, OR the url starts with '/' => RETURN url]]
+    I just don't know what '$url[0]' could stand for otherwise, it seems like letter-position...
+    */
     
-    See CCDeveloper.php for this in use.
-    
-    ========================================================================*/
-    public function CreateUrl($url=null) {
-      $prepend = $this->base_url;
-      if($this->cleanUrl) {
-        ;
-      } elseif ($this->querystringUrl) {
-        $prepend .= 'index.php?q=';
-      } else {
-        $prepend .= 'index.php/';
-      }
-      return $prepend . rtrim($url, '/');
+    if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
+      return $url;
     }
+    
+    /*--------------------------------------------------------------------------
+      
+      Get current controller if empty and method or arguments chosen*/
+      
+    /*
+    [[If we've input url AND the method is not empty OR we've assigned arguments => RETURN controller ]]
+    Since we've already analyzed the URL in CRequest::Init this script
+    knows what the controller is, so we simply return that.
+    */
+    
+    if(empty($url) && !empty($method) || !empty($arguments)) {
+      $url = $this->controller;
+    }
+    
+    /*--------------------------------------------------------------------------
+      
+      Get current method if empty and arguments chosen*/
+    
+    if(empty($method) && !empty($arguments)) {
+      $method = $this->method;
+    }
+    
+    /*--------------------------------------------------------------------------
+      
+      TBA Create url according to configured style*/
+    
+    $prepend = $this->base_url;
+    if($this->cleanUrl) {
+      ;
+    } elseif ($this->querystringUrl) {
+      $prepend .= 'index.php?q=';
+    } else {
+      $prepend .= 'index.php/';
+    }
+    $url = trim($url, '/');
+    $method = empty($method) ? null : '/' . trim($method, '/');
+    $arguments = empty($arguments) ? null : '/' . trim($arguments, '/');
+    return $prepend . rtrim("$url$method$arguments", '/');
+  }
+
+  
 }
