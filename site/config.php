@@ -213,7 +213,7 @@ $ne->config['theme'] = array(
   // Static entries for use in the template file for every page
   'data'          => array(
     'header'      => 'Neurosis',
-    'slogan'      => 'A PHP-based MVC-inspired CMF',
+    'slogan'      => 'PHP-based MVC-inspired CMF based on the Lydia framework by Mickael Roos',
     'favicon'     => 'logo_128x130.png',
     'logo'        => 'logo_128x130.png',
     'logo_width'  => 128,

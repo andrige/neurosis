@@ -18,6 +18,9 @@ class CCTheme extends CObject implements IController {
     parent::__construct(); 
     // Enable grid view upon construction, useful as this is the theme develop page.
     $this->views->AddStyle('body:hover{background:#fff url('.$this->request->base_url.'themes/grid/grid_12_60_20.png) repeat-y center top;}');
+    
+    $this->config['theme']['path'] = 'themes/grid';         // Setting the path to the parent theme 'grid'.
+    $this->config['theme']['stylesheet'] = 'style.php';     // Reroute the CSS so that it'll actually compile the style.less-file when we're on this page.
   }
 
   /**-------------------------------------------------------------------------

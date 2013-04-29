@@ -34,16 +34,16 @@ class CCModules extends CObject implements IController {
   public function Install() {
     $modules    = new CMModules();
     $allModules = $modules->ReadAndAnalyse();
-    if(isset($this->user['id'])) {
+/*     if(isset($this->user['id'])) { */
       $results    = $modules->Install();
       $this->views->SetTitle('Install Modules')
                   ->AddInclude(__DIR__ . '/install.tpl.php', array('modules'=>$results), 'primary')     // This view will display the result of the installation.
                   ->AddInclude(__DIR__ . '/sidebar.tpl.php', array('modules'=>$allModules), 'sidebar');
-    } else {
+/*     } else {
     $this->views->SetTitle('Please login')
          ->AddInclude(__DIR__ . '/failure.tpl.php', array(), 'primary')
          ->AddInclude(__DIR__ . '/sidebar.tpl.php', array('modules'=>$allModules), 'sidebar');
-    }
+    } */
   }
 
   

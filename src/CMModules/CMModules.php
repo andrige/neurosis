@@ -108,6 +108,7 @@ class CMModules extends CObject {
     ^TEMPORARY SOLUTION TO INSTALLATION ORDER
     */
     
+    
     $installed = array();
     foreach($allModules as $module) {
       if($module['isManageable']) {           // Has ReadAndAnalyse() told us it implements IModule?

@@ -118,7 +118,7 @@ function get_messages_from_session() {
 function login_menu() {
   $ne = CNeurosis::Instance();
   if($ne->user['isAuthenticated']) {
-    $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''> " . $ne->user['acronym'] . "</a> ";
+    $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(50) . "' alt=''> " . $ne->user['acronym'] . "</a> ";
     if($ne->user['hasRoleAdministrator']) {
       $items .= "<a href='" . create_url('acp') . "'>acp</a> ";
     }

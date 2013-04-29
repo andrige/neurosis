@@ -238,13 +238,13 @@ label {
   height: 15em;
 }
 html {
-  background-color: #eee;
+  background-color: #bbb5ae;
 }
 body {
   margin: 0;
   padding: 0;
   color: #333;
-  background-color: #fff;
+  background-color: #bbb5ae;
   color: #222;
   font: 100.01%/1.375 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -359,7 +359,7 @@ h6 img {
   text-align: center;
   font-size: 1em;
   padding-left: 0.2em;
-  text-shadow: #ccc 2px -2px 2px;
+  text-shadow: #bbb5ae 2px -2px 2px;
 }
 #banner #site-title a {
   text-decoration: none;
