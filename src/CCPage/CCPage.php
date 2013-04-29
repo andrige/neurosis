@@ -27,8 +27,8 @@ class CCPage extends CObject implements IController {
     $content = new CMContent();
     $this->views->SetTitle('Page')
                 ->AddInclude(__DIR__ . '/index.tpl.php', array(
-                  'content' => null,
-                ));
+                  'content' => null
+                ),'primary');
   }
 
 
@@ -43,7 +43,7 @@ class CCPage extends CObject implements IController {
     $this->views->SetTitle('Page: '.htmlEnt($content['title']));
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
                   'content' => $content,
-                ));
+                ),'primary');
   }
 
 

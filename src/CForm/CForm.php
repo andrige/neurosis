@@ -2,7 +2,7 @@
 /**
 * A utility class to easy creating and handling of forms
 *
-* @package LydiaCore
+* @package NeurosisCore
 */
 class CFormElement implements ArrayAccess{
 
@@ -22,8 +22,8 @@ class CFormElement implements ArrayAccess{
   public function __construct($name, $attributes=array()) {
     $this->attributes = $attributes;
     $this['name'] = $name;
-    if(is_callable('CLydia::Instance()')) {
-      $this->characterEncoding = CLydia::Instance()->config['character_encoding'];
+    if(is_callable('CNeurosis::Instance()')) {
+      $this->characterEncoding = CNeurosis::Instance()->config['character_encoding'];
     } else {
       $this->characterEncoding = 'UTF-8';
     }

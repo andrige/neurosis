@@ -41,7 +41,7 @@ class CCGuestbook extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
       'entries'=>$this->guestbookModel->ReadAll(),
       'form_action'=>$this->request->CreateUrl('', 'handler')
-    ));
+    ),'primary');
   }
 
   /**-------------------------------------------------------------------------

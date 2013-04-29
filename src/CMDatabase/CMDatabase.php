@@ -77,7 +77,7 @@ class CMDatabase {
 
 
   /**-------------------------------------------------------------------------
-   * Return last insert id
+   * Wrapper for PDO: Return last insert id
    *--------------------------------------------------------------------------
    */
   public function LastInsertId() {
@@ -86,11 +86,11 @@ class CMDatabase {
 
 
   /**-------------------------------------------------------------------------
-   * Return rows affected of last INSERT, UPDATE, DELETE
+   * Wrapper for PDO: Return rows affected of last INSERT, UPDATE, DELETE
    *--------------------------------------------------------------------------
    */
   public function RowCount() {
-    return is_null($this->stmt) ? $this->stmt : $this->stmt->rowCount();
+    return is_null($this->stmt) ? $this->stmt : $this->stmt->rowCount();  // If the statment is empty (execute), it'll be null and return null. Otherwise it will return rows affect by last database change.
   }
 
 

@@ -42,8 +42,11 @@ class CRequest {
     $this->querystringUrl = $urlType= 2 ? true : false;
   }
   
-  
-  public function Init($baseUrl = null) {
+  /**-------------------------------------------------------------------------
+   * Parse the current url request and divide it in controller, method and arguments
+   *--------------------------------------------------------------------------
+   */
+  public function Init($baseUrl = null, $routing=null) {
   
     /*--------------------------------------------------------------------------
       
@@ -54,7 +57,7 @@ class CRequest {
   
      /*--------------------------------------------------------------------------
       
-      NEW: Compare REQUEST_URI and SCRIPT_NAME as long they match, leave the rest as current request*/
+      Compare REQUEST_URI and SCRIPT_NAME as long they match, leave the rest as current request*/
      
     $i=0;
     $len = min(strlen($requestUri), strlen($scriptName));
@@ -66,23 +69,23 @@ class CRequest {
     
      /*--------------------------------------------------------------------------
       
-      NEW: Remove the ?-part from the query when analysing controller/metod/arg1/arg2*/
+      Remove the ?-part from the query when analysing controller/metod/arg1/arg2*/
      
      // [[If '?' exists in string => RETURN int. If no '?' exists in string => RETURN false]]
     $queryPos = strpos($request, '?');
     if($queryPos !== false) {                 // If '$queryPos' is not set to FALSE, proceed.
       $request = substr($request, 0, $queryPos);    // Get only the request part of the string. TBA What does the give us?
     }
-    
+      
     /*--------------------------------------------------------------------------
       
-      NEW: Check if request is empty and querystring link is set*/
+      Check if request is empty and querystring link is set*/
     
     if(empty($request) && isset($_GET['q'])) {
       $request = trim($_GET['q']);
     }
     $splits = explode('/', $request);
-    
+      
     
     /*--------------------------------------------------------------------------
       
@@ -94,9 +97,9 @@ class CRequest {
     $arguments = $splits;
     // Destroys the local variable inside this function.
     unset($arguments[0], $arguments[1]); // remove controller & method part from argument list
-    
-
-  
+      
+      
+      
     /*--------------------------------------------------------------------------
       
       Prepare to create current_url and base_url*/
@@ -107,27 +110,39 @@ class CRequest {
      * 'parse_url()' returns an array of the url, such as '$parts['scheme'] which 
      *-is 'http', and '$parts['host'] which is 'bth.se' (I think).
      */
-    $baseUrl       = !empty($baseUrl) ? $baseUrl : "{$parts['scheme']}://{$parts['host']}" . (isset($parts['port']) ? ":{$parts['port']}" : '') . rtrim(dirname($scriptName), '/');
+    $baseUrl 		= !empty($baseUrl) ? $baseUrl : "{$parts['scheme']}://{$parts['host']}" . (isset($parts['port']) ? ":{$parts['port']}" : '') . rtrim(dirname($scriptName), '/');
     /**
      * Outputs: ['scheme']://['host'].[is there a port then 'port'].[directory name of file]
      * Meaning: http://bth.se/ TBA
      */
+    /*--------------------------------------------------------------------------
+      
+     Check if url matches an entry in routing table, causing it to redirect as specified (/home/ to /index/index/)*/
+     
+    // The routing table is found in config.php.
+    $routed_from = null;
+    if(is_array($routing) && isset($routing[$request]) && $routing[$request]['enabled']) {    // Validates it being an array, sees if the request can be found in the routing list and if the routing is actually set as enabled.
+      $routed_from = $request;              // Remember where we were routed from.
+      $request = $routing[$request]['url'];   // If our request is 'home', it's something like '$routing[home][index/index]'.
+    }
+     
     
     /*--------------------------------------------------------------------------
       
-      Store it. Note that these variables are created here as well.*/
+      Store it. Note that some of these variables are created here as well.*/
     
     $this->base_url           = rtrim($baseUrl, '/') . '/'; // 'http://www.student.bth.se/~mblu08/phpmvc/kmom03_neurosis/'
     $this->current_url        = $currentUrl;                // 'http://www.student.bth.se/~mblu08/phpmvc/kmom03_neurosis/guestbook'
     $this->request_uri        = $_SERVER['REQUEST_URI'];    // '//~mblu08/phpmvc/kmom03_neurosis/guestbook'
     $this->script_name        = $_SERVER['SCRIPT_NAME'];    // '/~mblu08/phpmvc/kmom03_neurosis/index.php'
-    //$this->query            = $query;
+    $this->routed_from        = $routed_from;               // Remembers from where we were routed from if CRequest::$routing was used.
+    $this->request            = $request;                   // Remembers the request url.
     $this->splits             = $splits;                    // Array with the request ([0] => guestbook, [1] => handler, [2] => doAdd)
     $this->controller         = $controller;                // 'guestbook' (Referencing 'Guestbook.php')
     $this->method             = $method;                    // 'handler'   (-||- Guestbook::Handler)
     $this->arguments          = $arguments;                 // 'doAdd'     (-||- Guestbook::Handler(doAdd))
-    
-    }
+      
+  }
     
     
     /*==========================================================================

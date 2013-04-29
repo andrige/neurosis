@@ -19,7 +19,7 @@ ini_set('display_errors', 1);
   Set what to show as debug or developer information in the get_debug() theme helper*/
 
 $ne->config['debug']['display-neurosis'] = true;
-$ne->config['debug']['session'] = true;
+$ne->config['debug']['session'] = false;
 $ne->config['debug']['timer'] = true;
 $ne->config['debug']['db-num-queries'] = true;
 $ne->config['debug']['db-queries'] = true;
@@ -60,6 +60,10 @@ $ne->config['controllers'] = array(
   'content' => array('enabled' => true,'class' => 'CCContent'),
   'blog' => array('enabled' => true,'class' => 'CCBlog'),
   'page' => array('enabled' => true,'class' => 'CCPage'),
+  'theme' => array('enabled' => true,'class' => 'CCTheme'),
+  'modules' => array('enabled' => true,'class' => 'CCModules'),
+  // 'mycontroller' => array('enabled' => true,'class' => 'CCMyController'),
+  'my'        => array('enabled' => true,'class' => 'CCMyController'),
 );
 
 /*--------------------------------------------------------------------------
@@ -83,6 +87,16 @@ $ne->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_N
 $ne->config['session_key']  = 'neurosis';       // '['session_key']' allows us to use several instances of 'CSession.php'.
 
 
+/**-------------------------------------------------------------------------
+ * Define a routing table for urls
+ *--------------------------------------------------------------------------
+ * Route custom urls to a defined controller/method/arguments,
+ *-so for example we can redirect '/home' to '/index/index'.
+ */
+$ne->config['routing'] = array(
+  'home' => array('enabled' => true, 'url' => 'index/index'),
+);
+
 /*--------------------------------------------------------------------------
   
   Set a base_url to use another than the default calculated*/
@@ -90,7 +104,7 @@ $ne->config['session_key']  = 'neurosis';       // '['session_key']' allows us t
   /**
    * 'base_url' is used to overcome difficulties with the site source not being consistent.
    * This lets the user change this to whatever the please, and <a>/<img> sources will 
-   * -redirect correctly to the 'base_url'. Anyway, more about this TO BE ANSWERED
+   * -redirect correctly to the 'base_url'. Anyway, more about this TBA
    */
   
 $ne->config['base_url'] = null;
@@ -125,15 +139,6 @@ $ne->config['language'] = 'en';
 
 /*--------------------------------------------------------------------------
   
-  Define theme*/
-  
-$ne->config['theme'] = array(
-  // The name of the theme in the theme directory
-  'name'    => 'core',
-);
-
-/*--------------------------------------------------------------------------
-  
   What type of urls should be used?*/
 
 /**
@@ -143,14 +148,76 @@ $ne->config['theme'] = array(
 */
 $ne->config['url_type'] = 1;
 
-/*--------------------------------------------------------------------------
-  
-  Settings for the theme.*/
-  
-/**
- * Decide which theme to use at this location.
+
+/**-------------------------------------------------------------------------
+ * Define menus
+ *--------------------------------------------------------------------------
+ * Create hardcoded menus and map them to a theme region through $ne->config['theme'].
  */
+$ne->config['menus'] = array(
+  'navbar'      => array(
+    'home'      => array('label'=>'Home',     'url'=>''),
+    'modules'   => array('label'=>'Modules',  'url'=>'modules'),
+    'content'   => array('label'=>'Content',  'url'=>'content'),
+    'guestbook' => array('label'=>'Guestbook','url'=>'guestbook'),
+    'blog'      => array('label'=>'Blog',     'url'=>'blog'),
+  ),
+  'my-navbar' => array(
+    'home'      => array('label'=>'About Me', 'url'=>'my'),
+    'blog'      => array('label'=>'My Blog', 'url'=>'my/blog'),
+    'guestbook' => array('label'=>'Guestbook', 'url'=>'my/guestbook'),
+  ),
+);
+
+
+/*--------------------------------------------------------------------------
+* 
+* Settings for the theme. The theme may have a parent theme.
+*
+* When a parent theme is used the parent's functions.php will be included before the current
+* theme's functions.php. The parent stylesheet can be included in the current stylesheet
+* by an @import clause. See site/themes/mytheme for an example of a child/parent theme.
+* Template files can reside in the parent or current theme, the CLydia::ThemeEngineRender()
+* looks for the template-file in the current theme first, then it looks in the parent theme.
+*
+* There are two useful theme helpers defined in themes/functions.php.
+*  theme_url($url): Prepends the current theme url to $url to make an absolute url.
+*  theme_parent_url($url): Prepends the parent theme url to $url to make an absolute url.
+*
+* path: Path to current theme, relativly LYDIA_INSTALL_PATH, for example themes/grid or site/themes/mytheme.
+* parent: Path to parent theme, same structure as 'path'. Can be left out or set to null.
+* stylesheet: The stylesheet to include, always part of the current theme, use @import to include the parent stylesheet.
+* template_file: Set the default template file, defaults to default.tpl.php.
+* regions: Array with all regions that the theme supports.
+* data: Array with data that is made available to the template file as variables.
+*
+* The name of the stylesheet is also appended to the data-array, as 'stylesheet' and made
+* available to the template files.
+*/
 $ne->config['theme'] = array(
-  // The name of the theme in the theme directory
-  'name'    => 'core',
+  'path'            => 'site/themes/neat',  // User themes are placed in /site/.
+  // 'path'            => 'themes/grid',       // User themes are placed in /site/.
+  'parent'          => 'themes/grid',       // Neurosis theme default.
+  'stylesheet'      => 'style.css',         // Main stylesheet to include in template files 
+  'template_file'   => 'index.tpl.php',     // Default template file, else use default.tpl.php
+  'name'            => 'grid',
+
+  'regions' => array('navbar','flash','featured-first','featured-middle','featured-last',
+    'primary','sidebar','triptych-first','triptych-middle','triptych-last',
+    'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
+    'footer',
+  ),
+  // Region to show menu
+  'menu_to_region' => array('my-navbar'=>'navbar',
+  ),
+  // Static entries for use in the template file for every page
+  'data'          => array(
+    'header'      => 'Neurosis',
+    'slogan'      => 'A PHP-based MVC-inspired CMF',
+    'favicon'     => 'logo_128x130.png',
+    'logo'        => 'logo_128x130.png',
+    'logo_width'  => 128,
+    'logo_height' => 130,
+    'footer'      => '<p>Footer: &copy; Neurosis by Markus Lundberg, a framework modified on the Lydia framework by Mikael Roos (mos@dbwebb.se)</p>',
+  ),
 );

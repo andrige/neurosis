@@ -25,7 +25,7 @@ class CCContent extends CObject implements IController {
   public function Index() {
     $content = new CMContent();
     $this->views->SetTitle('Content Controller');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('contents' => $content->ListAll(),));
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('contents' => $content->ListAll()), 'primary');
   }
     
  
@@ -55,7 +55,7 @@ class CCContent extends CObject implements IController {
                   'user'=>$this->user,
                   'content'=>$content,
                   'form'=>$form,
-                ));
+                ),'primary');
   }
  
 

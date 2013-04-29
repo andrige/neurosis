@@ -21,29 +21,7 @@ class CCIndex extends CObject implements IController {
     */
    public function Index() {
     $this->views->SetTitle('Index Controller');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('menu'=>$this->Menu()));
-    
-      /***************************************************************************
-        --DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--
-      **
-       * Since 'CNeurosis' is a singleton pattern class, there should only be one instance of this.
-       * Therefore if we want to access 'CNeurosis' we can access it through 'CNeurosis::Instance()' which
-       * returns the object.
-       *
-      global $ne;
-      $ne = CNeurosis::Instance();
-      $ne->request->cleanUrl = true;
-
-      $url = 'developer/links';
-      $clean        = $ne->request->CreateUrl($url);
-      $url = 'report';
-      $report       = $ne->request->CreateUrl($url);
-
-      $ne->data['title'] = "The Index Controller";
-      $ne->data['main'] = "<p>This is Neurosis. It aptly stands for how I feel right now. It's a framework modified on the Lydia framework by Michael Roos for the course phpmvc (<a href='http://www.dbwebb.se/kurser'>dbwebb.se</a> for more information in swedish).</p> <p>To see how Neurosis handles links, click <a href='{$clean}'>here</a>. To read my report on this part of the course, click <a href='{$report}'>here</a>.</p>";
-      
-        --DEPRECATED--^--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--
-        ***************************************************************************/
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('menu'=>$this->Menu()),'primary');
   }
   
   /**-------------------------------------------------------------------------

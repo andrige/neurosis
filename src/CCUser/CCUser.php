@@ -37,7 +37,7 @@ class CCUser extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
       'is_authenticated'=>$this->user['isAuthenticated'], 
       'user'=>$this->user,
-    ));
+    ),'primary');
   }
   
   /**-------------------------------------------------------------------------
@@ -66,7 +66,7 @@ class CCUser extends CObject implements IController {
                   'login_form' => $form,
                   'allow_create_user' => CNeurosis::Instance()->config['create_new_users'],
                   'create_user_url' => $this->CreateUrl(null, 'create'),
-                ));
+                ),'primary');
   }
   
   /**-------------------------------------------------------------------------
@@ -103,7 +103,7 @@ class CCUser extends CObject implements IController {
                   'is_authenticated'=>$this->user['isAuthenticated'],
                   'user'=>$this->user,
                   'profile_form'=>$form->GetHTML(),
-                ));
+                ),'primary');
   }
   
   /**-------------------------------------------------------------------------
