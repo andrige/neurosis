@@ -3,9 +3,9 @@ NEUROSIS : CMF BASED ON THE LYDIA FRAMEWORK BY MIKAEL ROOS
 MODIFIED BY MARKUS LUNDBERG (www.andrige.com)
 Created for learning purposes, 2013-04 to 2013-05
 
-*------------------------------------------------------------------------
+*--------------------------------
 * Installation
-*------------------------------------------------------------------------
+*--------------------------------
 
 [1] Clone the framework using GitBash.
   [a] Browse to the folder you wish to clone your project into by using these commands:
@@ -33,15 +33,20 @@ Created for learning purposes, 2013-04 to 2013-05
     begin to create content, moderate users and groups using the admin functions 
     available to you as admin.
 
-*------------------------------------------------------------------------
-* Theme
-*------------------------------------------------------------------------
+*--------------------------------
+* Modify theme and add blog, page
+*--------------------------------
 
 [1] In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme.
   [a] Enable debug output texts.
+    [i] E.g. set "$ne->config['debug']['display-neurosis'] = false;" to true.
   [b] Create new menus.
-  [c] Set current theme as well as parent theme.
-  [d] Set logotype url, footer text, header title, the content of navigation menus.
+    [i] Look for '$ne->config['menus'] = array(' and the list beneath. To get started you can
+        try adding/changing entries under the 'my-navbar'. Try adding this text:
+        'login' => array('label'=>'Login','url'=>'user/login'),
+  [c] Set logotype url, footer text, header title, the content of navigation menus.
+      These under [d] are found at the bottom of the 'config.php' document.
+    [i] You can change logo image by replacing the 'logo.png' in 'site/themes/neat' folder.
 
 [2] You can change the look of the parent theme, 'grid', by using the admin functions.
     These changes to the parent theme will carry over to your sub-theme which you can
