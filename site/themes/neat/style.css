@@ -1,0 +1,10 @@
+/**
+* Description: Sample theme for site which extends the Neurosis grid-theme.
+*/
+@import url(../../../themes/grid/style.css);
+
+html{}
+body{background-image: url("background.png")}
+#outer-wrap-header{background-color:#9C9991;border-bottom:2px solid #888}
+#outer-wrap-footer{background-color:#9C9991}
+a{color:#436370}

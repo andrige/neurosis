@@ -1,0 +1,12 @@
+/**=========================================================================
+  
+ * .ht.sqlite
+  
+  Files that begin with '.ht' are protected by the webserver Apache.
+  
+  It's of course important that you double check that this is actually the case.
+  For more ways of protecting your database, see:
+  http://stackoverflow.com/questions/717444/most-supported-way-to-protect-flatfiles-sqlite-db-from-http-access
+  
+   ==========================================================================
+*/

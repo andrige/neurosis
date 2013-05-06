@@ -1,0 +1,22 @@
+/**
+* Description: Core theme for Neurosis
+*/
+
+/**
+* Structure
+*/
+html{}
+body{
+   background-color:#eee;
+   font: 1em Verdana, Arial, Helvetica, sans-serif;
+}
+
+#header,
+#main,
+#footer {
+   background-color:#fff;
+   padding: 1em;
+}
+
+.validation-failed{border:2px solid red;}
+.validation-message{color:red;font-size:smaller;}
