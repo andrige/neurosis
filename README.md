@@ -3,9 +3,9 @@ NEUROSIS : CMF BASED ON THE LYDIA FRAMEWORK BY MIKAEL ROOS
 MODIFIED BY MARKUS LUNDBERG (www.andrige.com)
 Created for learning purposes, 2013-04 to 2013-05
 
-*--------------------------------
+* --------------------------------
 * Installation
-*--------------------------------
+* --------------------------------
 
 [1] Clone the framework using GitBash.
   [a] Browse to the folder you wish to clone your project into by using these commands:
@@ -33,9 +33,9 @@ Created for learning purposes, 2013-04 to 2013-05
     begin to create content, moderate users and groups using the admin functions 
     available to you as admin.
 
-*--------------------------------
+* --------------------------------
 * Modify theme and add blog, page
-*--------------------------------
+* --------------------------------
 
 [1] In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme.
   [a] Enable debug output texts.
