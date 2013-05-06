@@ -16,6 +16,7 @@ class CCTheme extends CObject implements IController {
    */
   public function __construct() { 
     parent::__construct(); 
+<<<<<<< HEAD
     $this->navigation->OverrideNavbar('theme-manager-menu');
     // Enable grid view upon construction, useful as this is the theme develop page.
     $this->views->AddStyle('body:hover{background: url('.$this->request->base_url.'themes/grid/grid_12_60_20.png) repeat-y center top;}');
@@ -23,6 +24,13 @@ class CCTheme extends CObject implements IController {
     $this->config['theme']['path'] = 'themes/grid';         // Setting the path to the parent theme 'grid'.
     $this->config['theme']['stylesheet'] = 'style.php';     // Reroute the CSS so that it'll actually compile the style.less-file when we're on this page.
     
+=======
+    // Enable grid view upon construction, useful as this is the theme develop page.
+    $this->views->AddStyle('body:hover{background:#fff url('.$this->request->base_url.'themes/grid/grid_12_60_20.png) repeat-y center top;}');
+    
+    $this->config['theme']['path'] = 'themes/grid';         // Setting the path to the parent theme 'grid'.
+    $this->config['theme']['stylesheet'] = 'style.php';     // Reroute the CSS so that it'll actually compile the style.less-file when we're on this page.
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
 
   /**-------------------------------------------------------------------------
@@ -33,7 +41,11 @@ class CCTheme extends CObject implements IController {
     $this->views->SetTitle('Theme')
                 ->AddInclude(__DIR__ . '/index.tpl.php', array(
                   'theme_name' => $this->config['theme']['name'])) // Creates $theme_name to find in view.
+<<<<<<< HEAD
                 // ->AddString(, array(), 'primary')
+=======
+                ->AddString("Append <a href='{$this->request->CreateUrl('','someregions/primary','')}' alt=''>'/someregions/'</a> followed by the name of the regions you want to show between each dash, or <a href='{$this->request->CreateUrl('','allregions','')}' alt=''>'/allregions/'</a> to enable view of all the theme's regions. And finally you can view it using <a href='{$this->request->CreateUrl('','loremipsum','')}' alt=''>lorem ipsum</a>. <br/><br/>To write messages into a region, we're using CViewContainer::AddString().<br/><br/>Also, we're adding a grid overlay to only this page in CCTheme::__construct using CViewContainer::AddStyle().", array(), 'primary')
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
                 ;
   }
   

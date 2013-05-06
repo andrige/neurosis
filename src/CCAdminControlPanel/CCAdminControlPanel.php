@@ -16,7 +16,10 @@ class CCAdminControlPanel extends CObject implements IController {
    */
   public function __construct() {
     parent::__construct();
+<<<<<<< HEAD
     $this->navigation->OverrideNavbar('site-manager-menu');
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
 
 
@@ -25,6 +28,7 @@ class CCAdminControlPanel extends CObject implements IController {
    *--------------------------------------------------------------------------
    */
   public function Index() {
+<<<<<<< HEAD
     $this->views->SetTitle('ACP: Admin Control Panel')
                 ->AddInclude(__DIR__ . '/index.tpl.php',array(
                 ))
@@ -98,3 +102,9 @@ class CCAdminControlPanel extends CObject implements IController {
 } 
 
   
+=======
+    $this->views->SetTitle('ACP: Admin Control Panel');
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php');
+  }
+} 
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f

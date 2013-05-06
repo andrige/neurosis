@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>Kmom07: Färdigställ och produktifiera MVC-ramverket</h2>
 <p><strong>Vilken uppfattning har du om Git och GitHub?</strong><br/>
 Det är ett fantastiskt bra verktyg och helt gratis! Så länge man kan relevanta kommandon så är det inte mycket som hindrar en från att enkelt lägga upp hela sitt projekt på nätet, vilket är rätt häftigt. Det är väldigt bra för open-source projekt och att enkelt kunna bidra till något större tillsammans. Det som man kan ifrågasätta är hur pass nödvändigt det är för mig att lägga upp något på GitHub när jag inte har för avsikt (än så länge) att göra ett öppet projekt, men det är behändigt att clona andras ramverk för mina egna projekt!
@@ -15,3 +16,15 @@ Jo jag upptäckte att <code>CMContent::Manage()</code> försöker ta tag i den i
 Man drar ner det från mitt repository via kommandot: <code>git clone git://github.com/andrige/neurosis.git</code>, sätter sedan behörigheten till mappen '<code>site/data</code>' till <code>chmod 777</code> för att tillåta att sidan skapar databsen. Därefter kan man via index (tryck på logotypen) finna i en lista av länkar '<code>module/install</code>'. Klicka på den och du ska ha skapat databas med användare, samt även logga in dig som användare <code>root</code> med lösenordet <code>root</code>.
   </p>
   Projektet kan du hitta på <a href="https://github.com/andrige/neurosis">GitHub</a>
+=======
+<h2>Kmom02: Grunden till ett MVC-ramverk </h2>
+  <p><strong>Vilken uppfattning har du om Git och GitHub?</strong><br/>
+    </p>
+  <p><strong>Gick det smärtfritt att publicera ditt ramverk på GitHub?</strong><br/>
+    </p>
+  <p><strong>Skriv en kort summering av ditt ramverk, är det plain Lydia eller har det några extra features?</strong><br/>
+    </p>
+  <p><strong>Beskriv din testinstallation, gick den smidigt att göra eller var det något som krånglade, borde ramverket varit annorlunda?</strong><br/>
+    </p>
+    Projektet kan du hitta på <a href="https://github.com/andrige/neurosis">GitHub</a>
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f

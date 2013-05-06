@@ -14,6 +14,11 @@ body{
 #header,
 #main,
 #footer {
+<<<<<<< HEAD
+=======
+   margin:0 auto;
+   width:970px;
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    background-color:#fff;
    padding: 1em;
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:10719:"body {
+=======
+a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:9463:"body {
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   width: 100%;
   *zoom: 1;
 }
@@ -187,6 +191,7 @@ h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 4px;
 }
+<<<<<<< HEAD
 #outer-wrap-admin-menu {
   background-color: #555;
   border: 2px solid transparent;
@@ -231,6 +236,8 @@ h2 {
   background: #ccc;
   border: 5px 0 solid #222;
 }
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 #navbar ul.menu {
   list-style-type: none;
   padding: 2px 8px;
@@ -274,9 +281,12 @@ label {
 .form-action-link {
   font-size: smaller;
 }
+<<<<<<< HEAD
 .help-text {
   font-size: smaller;
 }
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 .content-edit input[type=text] {
   width: 30em;
 }
@@ -295,10 +305,13 @@ body {
   color: #222;
   font: 100.01%/1.375 Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+<<<<<<< HEAD
 html,
 body {
   height: 100%;
 }
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 h1 {
   font-weight: normal;
   color: #111;
@@ -470,9 +483,12 @@ h6 img {
   background-color: rgba(230,230,230,0.5);
   height: 100%;
 }
+<<<<<<< HEAD
 #outer-wrap-site {
   min-height: 100%;
 }
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 #inner-wrap-main {
   width: 960px;
   margin: 0 auto;
@@ -487,6 +503,7 @@ h6 img {
 #inner-wrap-main:after {
   clear: both;
 }
+<<<<<<< HEAD
 #main {
   overflow: auto;
   padding-bottom: 264px;
@@ -498,6 +515,8 @@ h6 img {
   margin: 0 10px;
   background-color: rgba(230,230,230,0.5);
 }
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 #primary {
   display: inline;
   float: left;
@@ -560,6 +579,7 @@ h6 img {
   clear: both;
 }
 #footer {
+<<<<<<< HEAD
   display: inline;
   float: left;
   width: 940px;
@@ -567,6 +587,9 @@ h6 img {
   font-size: 0.80em;
   color: #666;
   padding-bottom: 22px;
+=======
+  height: inherit;
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 }
 #footer-column-one,
 #footer-column-two,
@@ -582,10 +605,13 @@ h6 img {
   background-color: rgba(255,255,255,0.5);
 }
 #outer-wrap-footer {
+<<<<<<< HEAD
   position: relative;
   margin-top: -264px;
   height: 264px;
   clear: both;
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   background-color: rgba(230,230,230,0.5);
 }
 #inner-wrap-footer {
@@ -726,4 +752,8 @@ tfoot {
 .silent {
   color: #999;
 }
+<<<<<<< HEAD
 ";s:5:"files";a:2:{s:83:"/home/saxon/students/20082/mblu08/www/phpmvc/kmom10_neurosis/themes/grid/style.less";i:1367872790;s:111:"/home/saxon/students/20082/mblu08/www/phpmvc/kmom10_neurosis/themes/grid/semantic.gs/stylesheets/less/grid.less";i:1367323170;}s:7:"updated";i:1367872790;}
+=======
+";s:5:"files";a:2:{s:83:"/home/saxon/students/20082/mblu08/www/phpmvc/kmom07_neurosis/themes/grid/style.less";i:1367246868;s:111:"/home/saxon/students/20082/mblu08/www/phpmvc/kmom07_neurosis/themes/grid/semantic.gs/stylesheets/less/grid.less";i:1366721582;}s:7:"updated";i:1367246869;}
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f

@@ -1,13 +1,22 @@
 /** 
 * Description: Grid theme for Neurosis based on less, lessphp and semantic.gs.
+<<<<<<< HEAD
 * There's a thorough explanation on how this document is written (magic-number, line height and so on) at:
 * http://dbwebb.se/forum/viewtopic.php?p=1509#p1509
+=======
+* There's a thorough explanation on how this document is written (magic-number, line height and so on)
+* on http://dbwebb.se/forum/viewtopic.php?p=1509#p1509
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 * http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
 * http://www.sitepoint.com/eight-definitive-font-stacks/
 * 
 * The base font size in all browsers is 16px (1em). To define and avoiding bugs you set the fontsize 
 * to 100.01%:
+<<<<<<< HEAD
 *  "This odd 100.01% value for the font size compensates for several browser bugs. First, setting a 
+=======
+*   "This odd 100.01% value for the font size compensates for several browser bugs. First, setting a 
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 *  -default body font size in percent (instead of em) eliminates an IE/Win problem with growing or 
 *  -shrinking fonts out of proportion if they are later set in ems in other elements. Additionally, 
 *  -some versions of Opera will draw a default font-size of 100% too small compared to other browsers. 
@@ -16,7 +25,10 @@
 *
 * http://coding.smashingmagazine.com/2011/03/14/technical-web-typography-guidelines-and-techniques/ (Much recommended read)
 * http://coding.smashingmagazine.com/2009/06/02/fixed-vs-fluid-vs-elastic-layout-whats-the-right-one-for-you/ (Much recommended read)
+<<<<<<< HEAD
 * 
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 * The magic-number should be the same between the property 'line-height' and the font-size.
 * The amount of characters in width should be between 45 to 75 characters, where 69 is recommended.
 * 
@@ -24,14 +36,21 @@
 
 /** --------------------------------------------------------------
 * semantic.gs
+<<<<<<< HEAD
 * Should be left alone.
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 */
 @import url(semantic.gs/stylesheets/less/grid.less);
 
 
 /** --------------------------------------------------------------
 * Reset. http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+<<<<<<< HEAD
 * Should be left alone.
+=======
+*
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
 a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
@@ -47,7 +66,11 @@ table{border-collapse:collapse;border-spacing:0;}
 
 /** --------------------------------------------------------------
 * Standardize HTML5 elements for all browsers.
+<<<<<<< HEAD
 * Should be left alone.
+=======
+*
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 */
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
@@ -68,7 +91,10 @@ audio:not([controls]){display:none;}
 .wrap() {width:@total-width;margin:0 auto;.clearfix();}
 
 @magic-number:22px;
+<<<<<<< HEAD
 @footer-height: 12       * @magic-number;
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
 /** --------------------------------------------------------------
@@ -95,6 +121,7 @@ h1{border-bottom:3px double #ccc;padding-bottom:4px;}
 h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
 
 /** --------------------------------------------------------------
+<<<<<<< HEAD
 * Admin menu
 */
 #outer-wrap-admin-menu{background-color:#555;border:2px solid transparent;padding:0 8px;}
@@ -114,6 +141,9 @@ h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
 
 /** --------------------------------------------------------------
 * Navigation bar
+=======
+* Navbar
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 */
 #navbar{
   ul.menu{list-style-type:none;padding:2px 8px;margin:0;
@@ -135,7 +165,10 @@ label{font-size:smaller;}
 .validation-failed{border:2px solid red;}
 .validation-message{color:red;font-size:smaller;}
 .form-action-link{font-size:smaller;}
+<<<<<<< HEAD
 .help-text{font-size:smaller;}
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 .content-edit{
   input[type=text]{width:30em;}
@@ -150,7 +183,10 @@ html{background-color:@bgcolor1;}
 body{margin:0;padding:0;color:@color;background-color:@bgcolor2;  /*font:@font;*/  color:#222;font:100.01%/1.375 @font-family-helvetica;
  //  &:hover{background:#fff url(grid_12_60_20.png) repeat-y center top;} // Grid background, disabled as we add it on a page-per-page basis through CViewContainer::AddStyle() to keep the grid only on our theme-testing page (CCTheme).
 }  
+<<<<<<< HEAD
 html,body{height: 100%;}
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
 /** --------------------------------------------------------------
@@ -219,12 +255,19 @@ h1 img,h2 img,h3 img,h4 img,h5 img,h6 img{margin:0;}
 * The main content area.
 *
 */
+<<<<<<< HEAD
 #outer-wrap-site{min-height:100%;}
 #outer-wrap-main{}
 #inner-wrap-main{.wrap;margin-bottom:@magic-number;}
 #main{ overflow:auto; padding-bottom: @footer-height;}
 
 #fullwidth{.column(12);background-color:@bgtest;}
+=======
+#outer-wrap-main{}
+#inner-wrap-main{.wrap;margin-bottom:@magic-number;}
+#main{}
+
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 #primary{.column(8);background-color:@bgtest;}
 #sidebar{.column(4);background-color:@bgtest;}
 
@@ -248,7 +291,11 @@ h1 img,h2 img,h3 img,h4 img,h5 img,h6 img{margin:0;}
 */
 #outer-wrap-footer-column{background-color:@bgtest;border-top:1px solid #bbb;}
 #inner-wrap-footer-column{.wrap();height:@magic-number*5;padding-bottom:@magic-number;}
+<<<<<<< HEAD
 #footer{.column(12);font-size:0.80em;color:#666;padding-bottom:@magic-number;}
+=======
+#footer{height:inherit;}
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 #footer-column-one,
 #footer-column-two,
@@ -261,7 +308,11 @@ background-color:lighten(@bgtest,10%);}
 * The footer area.
 *
 */
+<<<<<<< HEAD
 #outer-wrap-footer{position:relative;margin-top:-@footer-height;height:@footer-height;clear:both;background-color:@bgtest;}
+=======
+#outer-wrap-footer{background-color:@bgtest;}
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 #inner-wrap-footer{.wrap();}
 #footer{.column(12);font-size:0.80em;color:#666;padding-bottom:@magic-number;}
 
@@ -327,6 +378,7 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 * Misc
 */
 .smaller-text{font-size:smaller;}
+<<<<<<< HEAD
 .silent{color:#999;}
 
 /**===============================================================
@@ -350,3 +402,6 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
 
 
 
+=======
+.silent{color:#999;}
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f

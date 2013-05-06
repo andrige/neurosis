@@ -119,8 +119,13 @@ function login_menu() {
   $ne = CNeurosis::Instance();
   if($ne->user['isAuthenticated']) {
     $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(50) . "' alt=''> " . $ne->user['acronym'] . "</a> ";
+<<<<<<< HEAD
     if($ne->user['hasRoleAdmin']) {
       $items .= "<a href='" . create_url('admin') . "'>acp</a> ";
+=======
+    if($ne->user['hasRoleAdministrator']) {
+      $items .= "<a href='" . create_url('acp') . "'>acp</a> ";
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
     $items .= "<a href='" . create_url('user/logout') . "'>logout</a> ";
   } else {
@@ -131,6 +136,7 @@ function login_menu() {
 
 
 /**-------------------------------------------------------------------------
+<<<<<<< HEAD
  * Admin menu. Creates a bar at the top of the page with admin tools.
  *--------------------------------------------------------------------------
  */
@@ -145,6 +151,8 @@ function admin_menu() {
 
 
 /**-------------------------------------------------------------------------
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
  * Get a gravatar based on the user's email
  *--------------------------------------------------------------------------
  */

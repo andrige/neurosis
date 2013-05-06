@@ -3,7 +3,11 @@
 */
 @import url(../../../themes/grid/style.css);
 
+<<<<<<< HEAD
 html{}
+=======
+html{background-color:#FFE2B3;}
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 body{background-image: url("background.png")}
 #outer-wrap-header{background-color:#9C9991;border-bottom:2px solid #888}
 #outer-wrap-footer{background-color:#9C9991}

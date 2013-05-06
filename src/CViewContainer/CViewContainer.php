@@ -68,7 +68,11 @@ class CViewContainer {
    * @param $region string the theme region, uses string 'default' as default region.
    * @returns $this.
    */
+<<<<<<< HEAD
   public function AddInclude($file, $variables=array(), $region='primary') {
+=======
+  public function AddInclude($file, $variables=array(), $region='default') {
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     $this->views[$region][] = array('type' => 'include', 'file' => $file, 'variables' => $variables);
     return $this;
   }

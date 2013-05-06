@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <!-- Functions which does checks before it adds content to regions in shared_functions::* -->
 <?=admin_menu()?>
 
@@ -35,6 +36,23 @@
       </div>
     </div>
   </div>
+=======
+<div id='outer-wrap-header'>      <!-- Contains background that covers 100% width. Lets us set background color/image. -->
+  <div id='inner-wrap-header'>      <!-- Site width -->
+    <div id='header'>                 <!-- Logo/login -->
+      <div id='login-menu'><?=login_menu()?></div>  <!-- shared_functions::login_menu() -->
+      <div id='banner'>
+        <a href='<?=base_url()?>'><img id='site-logo' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /></a>
+        <span id='site-title'><a href='<?=base_url()?>'><h1><?=$header?></h1></a></span>
+        <span id='site-slogan'><?=$slogan?></span>
+      </div>
+      <?php if(region_has_content('navbar')): ?>
+      <div id='navbar'><?=render_views('navbar')?></div>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
 <?php if(region_has_content('flash')): ?>           <!-- Checks if the region 'flash' actually has anything in it -->
@@ -55,6 +73,7 @@
 </div>
 <?php endif; ?>
 
+<<<<<<< HEAD
 <?php if(region_has_content('primary', 'sidebar','fullwidth')): ?>
 <div id='outer-wrap-main'>
   <div id='inner-wrap-main'>
@@ -69,6 +88,16 @@
 </div>
 <?php endif; ?>
 
+=======
+<?php if(region_has_content('primary', 'sidebar')): ?>
+<div id='outer-wrap-main'>
+  <div id='inner-wrap-main'>
+    <div id='primary'><?=render_views('primary')?></div>  <!-- shared_functions::render_views(), and argument should be for $ne->views[$argument]  -->
+    <div id='sidebar'><?=render_views('sidebar')?></div>
+  </div>
+</div>
+<?php endif; ?>
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 <?php if(region_has_content('triptych-first', 'triptych-middle', 'triptych-last')): ?>
 <div id='outer-wrap-triptych'>
   <div id='inner-wrap-triptych'>
@@ -79,6 +108,7 @@
 </div>
 <?php endif; ?>
 
+<<<<<<< HEAD
 </div>  <!-- outer-wrap-site end -->
 </div>  <!-- outer-wrap-site end -->
 
@@ -97,5 +127,24 @@
     <div id='footer'><?=$footer?><?=get_tools()?><?=get_debug()?></div>
   </div>
 </div>
+=======
+<?php if(region_has_content('footer-column-one','footer-column-two','footer-column-three','footer-column-four')): ?>
+<div id='outer-wrap-footer-column'>
+  <div id='inner-wrap-footer-column'>
+    <div id='footer-column-one'><?=render_views('footer-column-one')?></div>
+    <div id='footer-column-two'><?=render_views('footer-column-two')?></div>
+    <div id='footer-column-three'><?=render_views('footer-column-three')?></div>
+    <div id='footer-column-four'><?=render_views('footer-column-four')?></div>
+  </div>
+</div>
+<?php endif; ?>
+
+<div id='outer-wrap-footer'>
+  <div id='inner-wrap-footer'>
+    <div id='footer'><?=$footer?><?=get_tools()?><?=get_debug()?></div>
+  </div>
+</div>
+
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 </body>
 </html>

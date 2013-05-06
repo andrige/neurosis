@@ -56,10 +56,13 @@ class CFormElement implements ArrayAccess{
     $type = isset($this['type']) ? " type='{$this['type']}'" : null;
     $onlyValue = isset($this['value']) ? htmlentities($this['value'], ENT_COMPAT, $this->characterEncoding) : null;
     $value = isset($this['value']) ? " value='{$onlyValue}'" : null;
+<<<<<<< HEAD
     // TBA This array could be a security problem.
     $valuearray = isset($this['valuearray']) ? $this['valuearray'] : null;
     $firstentry = isset($this['firstentry']) ? $this['firstentry'] : null;
     $text = isset($this['text']) ? $this['text'] : null;
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
     $messages = null;
     if(isset($this['validation-messages'])) {
@@ -76,6 +79,7 @@ class CFormElement implements ArrayAccess{
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n";
     } else if($type && $this['type'] == 'hidden') {
         return "<input id='$id'{$type}{$class}{$name}{$value} />\n";
+<<<<<<< HEAD
     } else if($type && $this['type'] == 'dropdown') {
         $html = "<select {$name}><option value='-1'>{$firstentry}</option>";
         foreach($valuearray as $val) {
@@ -85,6 +89,8 @@ class CFormElement implements ArrayAccess{
         return $html;
     } else if($type && $this['type'] == 'helptext') {
         return "<p class='help-text'>{$text}</p>";
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     } else {
       return "<p><label for='$id'>$label</label><br><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} />{$messages}</p>\n";	
     }
@@ -172,6 +178,7 @@ class CFormElementTextarea extends CFormElement {
 }
 
 
+<<<<<<< HEAD
 class CFormElementHelpText extends CFormElement {
   /**
 * Constructor
@@ -187,6 +194,8 @@ class CFormElementHelpText extends CFormElement {
 }
 
 
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 class CFormElementHidden extends CFormElement {
   /**
 * Constructor
@@ -216,6 +225,7 @@ class CFormElementPassword extends CFormElement {
 }
 
 
+<<<<<<< HEAD
 class CFormElementDropdown extends CFormElement {
   /**
 * Constructor
@@ -231,6 +241,8 @@ class CFormElementDropdown extends CFormElement {
 }
 
 
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 class CFormElementSubmit extends CFormElement {
   /**
 * Constructor

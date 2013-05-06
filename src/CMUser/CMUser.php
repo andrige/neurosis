@@ -48,6 +48,7 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
    */
   public static function SQL($key=null) {
     $queries = array(
+<<<<<<< HEAD
       'select * from user'               => "SELECT * FROM User;",
       'select * from user where id'      => "SELECT * FROM User WHERE id=?;",
       'delete * from user where id'      => "DELETE FROM User WHERE id=?;",
@@ -74,6 +75,8 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
       
       'select * user members where idgroups'   => 'SELECT * FROM User AS u INNER JOIN User2Groups AS ug ON u.id=ug.idUser WHERE ug.idGroups=?;',
       
+=======
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       'drop table user'         => "DROP TABLE IF EXISTS User;",
       'drop table group'        => "DROP TABLE IF EXISTS Groups;",
       'drop table user2group'   => "DROP TABLE IF EXISTS User2Groups;",
@@ -81,7 +84,14 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
       'create table group'      => "CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
       'create table user2group' => "CREATE TABLE IF NOT EXISTS User2Groups (idUser INTEGER, idGroups INTEGER, created DATETIME default (datetime('now')), PRIMARY KEY(idUser, idGroups));",
       'insert into user'        => 'INSERT INTO User (acronym,name,email,algorithm,salt,password) VALUES (?,?,?,?,?,?);',
+<<<<<<< HEAD
       'check user password'     => 'SELECT * FROM User WHERE (acronym=? OR email=?);',
+=======
+      'insert into group'       => 'INSERT INTO Groups (acronym,name) VALUES (?,?);',
+      'insert into user2group'  => 'INSERT INTO User2Groups (idUser,idGroups) VALUES (?,?);',
+      'check user password'     => 'SELECT * FROM User WHERE (acronym=? OR email=?);',
+      'get group memberships'   => 'SELECT * FROM Groups AS g INNER JOIN User2Groups AS ug ON g.id=ug.idGroups WHERE ug.idUser=?;',
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       'update profile'          => "UPDATE User SET name=?, email=?, updated=datetime('now') WHERE id=?;",
       'update password'         => "UPDATE User SET algorithm=?, salt=?, password=?, updated=datetime('now') WHERE id=?;",
      );
@@ -108,7 +118,11 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
           $this->db->ExecuteQuery(self::SQL('create table user'));
           $this->db->ExecuteQuery(self::SQL('create table group'));
           $this->db->ExecuteQuery(self::SQL('create table user2group'));
+<<<<<<< HEAD
           $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonymous', 'Anonymous, not authenticated', null, 'plain', null, null));
+=======
+          $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonomous', 'Anonomous, not authenticated', null, 'plain', null, null));
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
           $password = $this->CreatePassword('root');
           $this->db->ExecuteQuery(self::SQL('insert into user'), array('root', 'The Administrator', 'root@dbwebb.se', $password['algorithm'], $password['salt'], $password['password']));
           $idRootUser = $this->db->LastInsertId();
@@ -178,7 +192,11 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
    * @returns booelan true if match else false.
    */
   public function Login($acronymOrEmail, $password) {
+<<<<<<< HEAD
     $user = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check user password'), array($acronymOrEmail, $acronymOrEmail)); // Will return is about the user (see the SQL for the '*').
+=======
+    $user = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check user password'), array($acronymOrEmail, $acronymOrEmail)); // Will return everything about the user (see the SQL for the '*').
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     $user = (isset($user[0])) ? $user[0] : null;    // Prevents the user from logging in multiple times. 
     
     if(!$user) {
@@ -228,9 +246,15 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
   }
   
   /**-------------------------------------------------------------------------
+<<<<<<< HEAD
    * Save user profile to database and update user profile in session
    *--------------------------------------------------------------------------
    * @param int User ID to save in database
+=======
+   * Save user profile to database and update user profile in session.
+   *--------------------------------------------------------------------------
+   *
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    * @returns boolean true if success else false.
    */
   public function Save() {
@@ -238,6 +262,10 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
     $this->session->SetAuthenticatedUser($this->profile);
     return $this->db->RowCount() === 1;
   }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   /**-------------------------------------------------------------------------
    * Change user password
    *--------------------------------------------------------------------------
@@ -253,7 +281,11 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
     
     
   /**-------------------------------------------------------------------------
+<<<<<<< HEAD
    * Create password
+=======
+   * NEW v208: Create password
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    * http://dbwebb.se/forum/viewtopic.php?p=1305#p1305
    *--------------------------------------------------------------------------
    * @param $plain string the password plain text to use as base.
@@ -315,7 +347,11 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
    * @param $email string the user email.
    * @returns boolean true if user was created or else false and sets failure message in session.
    */
+<<<<<<< HEAD
   public function CreateUser($acronym, $password, $name, $email) {
+=======
+  public function Create($acronym, $password, $name, $email) {
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     $pwd = $this->CreatePassword($password);
     $this->db->ExecuteQuery(self::SQL('insert into user'), array($acronym, $name, $email, $pwd['algorithm'], $pwd['salt'], $pwd['password']));
     if($this->db->RowCount() == 0) {
@@ -323,6 +359,7 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
       return false;
     }
     return true;
+<<<<<<< HEAD
   }  
   
   /**-------------------------------------------------------------------------
@@ -497,4 +534,7 @@ class CMUser extends CObject implements IHasSQL, IModule, ArrayAccess {
   }
   
   
+=======
+  }
+>>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 }
