@@ -10,14 +10,10 @@ class CCModules extends CObject implements IController {
    * Constructor
    *--------------------------------------------------------------------------
    */
-<<<<<<< HEAD
   public function __construct() { 
     parent::__construct(); 
     $this->navigation->OverrideNavbar('module-manager-menu');
   }
-=======
-  public function __construct() { parent::__construct(); }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
   /**-------------------------------------------------------------------------

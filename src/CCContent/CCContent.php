@@ -14,14 +14,10 @@ class CCContent extends CObject implements IController {
    * Constructor
    *--------------------------------------------------------------------------
    */
-<<<<<<< HEAD
   public function __construct() { 
     parent::__construct(); 
     $this->navigation->OverrideNavbar('content-manager-menu');
   }
-=======
-  public function __construct() { parent::__construct(); }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
   /**-------------------------------------------------------------------------
@@ -32,11 +28,7 @@ class CCContent extends CObject implements IController {
   public function Index() {
     $content = new CMContent();
     $this->views->SetTitle('Content Controller');
-<<<<<<< HEAD
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('contents' => $content->ListAll()), 'fullwidth');
-=======
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('contents' => $content->ListAll()), 'primary');
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
     
  
@@ -54,15 +46,9 @@ class CCContent extends CObject implements IController {
     $status = $form->Check();             // Checks if the content of the form (CFormContent) checks out.
     if($status === false) {               // Nope?
       $this->AddMessage('notice', 'The form could not be processed.');
-<<<<<<< HEAD
       $this->RedirectToMethod('edit', $id);
     } else if($status === true) {         // Yep!
       $this->RedirectToMethod('edit', $content['id']);  // Redirect back to edit and show the same content we just saved.
-=======
-      $this->RedirectToController('edit', $id);
-    } else if($status === true) {         // Yep!
-      $this->RedirectToController('edit', $content['id']);  // Redirect back to edit and show the same content we just saved.
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
    
     $title = isset($id) ? 'Edit' : 'Create';          // Sets the title.
@@ -92,11 +78,7 @@ class CCContent extends CObject implements IController {
   public function Init() {
     $content = new CMContent();
     $content->Init();
-<<<<<<< HEAD
     $this->RedirectToMethod();
-=======
-    $this->RedirectToController();
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
  
 

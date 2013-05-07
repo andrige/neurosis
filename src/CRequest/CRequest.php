@@ -46,11 +46,7 @@ class CRequest {
    * Parse the current url request and divide it in controller, method and arguments
    *--------------------------------------------------------------------------
    */
-<<<<<<< HEAD
   public function Init($baseUrl = null, $routing=null, $databaseInstalled=null) {
-=======
-  public function Init($baseUrl = null, $routing=null) {
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
     /*--------------------------------------------------------------------------
       
@@ -101,10 +97,7 @@ class CRequest {
     $arguments = $splits;
     // Destroys the local variable inside this function.
     unset($arguments[0], $arguments[1]); // remove controller & method part from argument list
-<<<<<<< HEAD
     
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       
       
       
@@ -130,7 +123,6 @@ class CRequest {
     // The routing table is found in config.php.
     $routed_from = null;
     if(is_array($routing) && isset($routing[$request]) && $routing[$request]['enabled']) {    // Validates it being an array, sees if the request can be found in the routing list and if the routing is actually set as enabled.
-<<<<<<< HEAD
       $routed_from = $request;                // Remember where we were routed from.
       $request = $routing[$request]['url'];   // If our request is 'home', it's something like '$routing[home][index/index]'.
     }
@@ -144,12 +136,6 @@ class CRequest {
       $controller = 'install';
       $method     = 'index';
     }
-=======
-      $routed_from = $request;              // Remember where we were routed from.
-      $request = $routing[$request]['url'];   // If our request is 'home', it's something like '$routing[home][index/index]'.
-    }
-     
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     
     /*--------------------------------------------------------------------------
       
@@ -162,49 +148,11 @@ class CRequest {
     $this->routed_from        = $routed_from;               // Remembers from where we were routed from if CRequest::$routing was used.
     $this->request            = $request;                   // Remembers the request url.
     $this->splits             = $splits;                    // Array with the request ([0] => guestbook, [1] => handler, [2] => doAdd)
-<<<<<<< HEAD
     $this->controller         = $controller;                // 'guestbook' (CCGuestbook.php)
     $this->method             = $method;                    // 'handler'   (CCGuestbook::Handler)
     $this->arguments          = $arguments;                 // 'doAdd'     (CCGuestbook::Handler(doAdd))
     // print_r($this->arguments);
   }
-=======
-    $this->controller         = $controller;                // 'guestbook' (Referencing 'Guestbook.php')
-    $this->method             = $method;                    // 'handler'   (-||- Guestbook::Handler)
-    $this->arguments          = $arguments;                 // 'doAdd'     (-||- Guestbook::Handler(doAdd))
-      
-  }
-    
-    
-    /*==========================================================================
-      
-      NOTATION SECTION FOR THIS FUNCTION (deprecated code)
-      
-      ========================================================================*/
-    /*--------------------------------------------------------------------------
-      
-      Take current url and divide it in controller, method and arguments*/
-      
-    /**
-     * Take the uri and to return only the query portion.
-     * 
-     * http://dbwebb.se/forum/viewtopic.php?p=126#p126
-     * It gets the length of the request,
-     *-it trims away the whitespace at the end of the string excluding '/',
-     *-it gets the directory of the file (site/index.php).
-     * It returns a pure string of only letters from the URI, like 'method1/arg1/arg2/'
-     * This can only handle uri requests like 'site/method1/arg1/arg2/' and not 'site/index.php/method1/etc' or 'site/index.php?method=1'.
-     * This we'll have to find out ourselves!
-     *//*
-    $query = substr($_SERVER['REQUEST_URI'], strlen(rtrim(dirname($_SERVER['SCRIPT_NAME']), '/')));
-    // It explodes out the string into an array at the '/' separations.
-    $splits = explode('/', trim($query, '/')); 
-    */
-  
-  
-  
- 
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
   /**-------------------------------------------------------------------------
    * Get the url to the current page

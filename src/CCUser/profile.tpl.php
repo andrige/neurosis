@@ -12,10 +12,4 @@
 </ul>
 <?php else: ?>
 <p>User is anonymous and not authenticated.</p>
-<<<<<<< HEAD
 <?php endif; ?>
-=======
-<?php endif; ?>
-
-
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f

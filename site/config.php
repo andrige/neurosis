@@ -18,19 +18,11 @@ ini_set('display_errors', 1);
   
   Set what to show as debug or developer information in the get_debug() theme helper*/
 
-<<<<<<< HEAD
 $ne->config['debug']['display-neurosis'] = false;
 $ne->config['debug']['session'] = false;
 $ne->config['debug']['timer'] = false;
 $ne->config['debug']['db-num-queries'] = false;
 $ne->config['debug']['db-queries'] = false;
-=======
-$ne->config['debug']['display-neurosis'] = true;
-$ne->config['debug']['session'] = false;
-$ne->config['debug']['timer'] = true;
-$ne->config['debug']['db-num-queries'] = true;
-$ne->config['debug']['db-queries'] = true;
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 /*--------------------------------------------------------------------------
   
@@ -58,7 +50,6 @@ $ne->config['create_new_users'] = true;
 */
   // Create the array 'index[]' within the 'config[]' array entry 'config['controllers']'.
   // Here we can create more classes if needed by adding more entries to this array.
-<<<<<<< HEAD
 
 
 $ne->config['controllers'] = array(
@@ -77,22 +68,6 @@ $ne->config['controllers'] = array(
   'user' => array('enabled' => true,'class' => 'CCUser'),
   // 'usermanager' => array('enabled' => true,'class' => 'CCUserManager'),
   'navigation' => array('enabled' => true,'class' => 'CNavigation'),
-=======
-$ne->config['controllers'] = array(
-  'index' => array('enabled' => true,'class' => 'CCIndex'),
-  'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
-  'report' => array('enabled' => true,'class' => 'CCReport'),
-  'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
-  'user' => array('enabled' => true,'class' => 'CCUser'),
-  'acp' => array('enabled' => true,'class' => 'CCAdminControlPanel'),
-  'content' => array('enabled' => true,'class' => 'CCContent'),
-  'blog' => array('enabled' => true,'class' => 'CCBlog'),
-  'page' => array('enabled' => true,'class' => 'CCPage'),
-  'theme' => array('enabled' => true,'class' => 'CCTheme'),
-  'modules' => array('enabled' => true,'class' => 'CCModules'),
-  // 'mycontroller' => array('enabled' => true,'class' => 'CCMyController'),
-  'my'        => array('enabled' => true,'class' => 'CCMyController'),
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 );
 
 /*--------------------------------------------------------------------------
@@ -147,10 +122,7 @@ $ne->config['base_url'] = null;
   We can add more databases at different positions by numerizing them.
   */
 $ne->config['database'][0]['dsn'] = 'sqlite:' . NEUROSIS_SITE_PATH . '/data/.ht.sqlite';
-<<<<<<< HEAD
 $ne->config['database'][0]['path'] = NEUROSIS_SITE_PATH . '/data/.ht.sqlite';
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 /*--------------------------------------------------------------------------
   
@@ -188,7 +160,6 @@ $ne->config['url_type'] = 1;
  * Create hardcoded menus and map them to a theme region through $ne->config['theme'].
  */
 $ne->config['menus'] = array(
-<<<<<<< HEAD
   'my-navbar'   => array('reqRoleAdmin'=>false,'items'=>array(
     'home'      => array('label'=>'About',     'url'=>''),
     'blog'      => array('label'=>'Blog',     'url'=>'blog'),
@@ -224,20 +195,6 @@ $ne->config['menus'] = array(
   )),
   
   
-=======
-  'navbar'      => array(
-    'home'      => array('label'=>'Home',     'url'=>''),
-    'modules'   => array('label'=>'Modules',  'url'=>'modules'),
-    'content'   => array('label'=>'Content',  'url'=>'content'),
-    'guestbook' => array('label'=>'Guestbook','url'=>'guestbook'),
-    'blog'      => array('label'=>'Blog',     'url'=>'blog'),
-  ),
-  'my-navbar' => array(
-    'home'      => array('label'=>'About Me', 'url'=>'my'),
-    'blog'      => array('label'=>'My Blog', 'url'=>'my/blog'),
-    'guestbook' => array('label'=>'Guestbook', 'url'=>'my/guestbook'),
-  ),
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 );
 
 
@@ -267,22 +224,13 @@ $ne->config['menus'] = array(
 */
 $ne->config['theme'] = array(
   'path'            => 'site/themes/neat',  // User themes are placed in /site/.
-<<<<<<< HEAD
-=======
-  // 'path'            => 'themes/grid',       // User themes are placed in /site/.
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   'parent'          => 'themes/grid',       // Neurosis theme default.
   'stylesheet'      => 'style.css',         // Main stylesheet to include in template files 
   'template_file'   => 'index.tpl.php',     // Default template file, else use default.tpl.php
   'name'            => 'grid',
 
-<<<<<<< HEAD
   'regions' => array('navbar','admin-menu','flash','featured-first','featured-middle','featured-last',
     'primary','sidebar','fullwidth','triptych-first','triptych-middle','triptych-last',
-=======
-  'regions' => array('navbar','flash','featured-first','featured-middle','featured-last',
-    'primary','sidebar','triptych-first','triptych-middle','triptych-last',
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
     'footer',
   ),
@@ -292,20 +240,11 @@ $ne->config['theme'] = array(
   // Static entries for use in the template file for every page
   'data'          => array(
     'header'      => 'Neurosis',
-<<<<<<< HEAD
     'slogan'      => 'MVC based on the Lydia framework by Mikael Roos',
     'favicon'     => 'logo.png',
     'logo'        => 'logo.png',
     'logo_width'  => 128,
     'logo_height' => 128,
     'footer'      => '<p>Footer: &copy; Neurosis by Markus Lundberg, a framework modified on the <a href="https://github.com/mosbth/lydia">Lydia framework</a> by Mikael Roos (mos@dbwebb.se)</p> ',
-=======
-    'slogan'      => 'PHP-based MVC-inspired CMF based on the Lydia framework by Mickael Roos',
-    'favicon'     => 'logo_128x130.png',
-    'logo'        => 'logo_128x130.png',
-    'logo_width'  => 128,
-    'logo_height' => 130,
-    'footer'      => '<p>Footer: &copy; Neurosis by Markus Lundberg, a framework modified on the Lydia framework by Mikael Roos (mos@dbwebb.se)</p>',
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   ),
 );

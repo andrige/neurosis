@@ -28,10 +28,7 @@ class CObject {
   protected $views;
   protected $session;
   protected $user;
-<<<<<<< HEAD
   protected $navigation;
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
 
    
@@ -47,7 +44,6 @@ class CObject {
     if(!$ne) {
       $ne = CNeurosis::Instance();
     } 
-<<<<<<< HEAD
     $this->ne         = &$ne;
     $this->config     = &$ne->config;
     $this->request    = &$ne->request;
@@ -57,16 +53,6 @@ class CObject {
     $this->session    = &$ne->session;      // Links connection to database.
     $this->user       = &$ne->user;         
     $this->navigation = &$ne->navigation;         
-=======
-    $this->ne       = &$ne;
-    $this->config   = &$ne->config;
-    $this->request  = &$ne->request;
-    $this->data     = &$ne->data;
-    $this->db       = &$ne->db;           // Links connection to database.
-    $this->views    = &$ne->views;        // Links 
-    $this->session  = &$ne->session;      // Links connection to database.
-    $this->user     = &$ne->user;         
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     
     
     
@@ -76,11 +62,7 @@ class CObject {
    * Wrapper of Neurosis method. Redirect to another url and store the session.
    *--------------------------------------------------------------------------
    */
-<<<<<<< HEAD
 	protected function RedirectTo($urlOrController=null, $method=null, $arguments=null) {
-=======
-	protected function RedirectTo($urlOrController=null, $method=null) {
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       $this->ne->RedirectTo($urlOrController, $method, $arguments);
     }
 
@@ -88,13 +70,8 @@ class CObject {
    * Wrapper of Neurosis method. Redirect to a method within the current controller. Defaults to index-method. Uses RedirectTo().
    *--------------------------------------------------------------------------
    */
-<<<<<<< HEAD
   protected function RedirectToMethod($method=null, $arguments=null) {
       $this->ne->RedirectToMethod($method, $arguments);
-=======
-  protected function RedirectToController($method=null, $arguments=null) {
-      $this->ne->RedirectToController($method, $arguments);
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
     
  /**-------------------------------------------------------------------------

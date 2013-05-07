@@ -34,12 +34,9 @@ class CNeurosis implements ISingleton {
     public $session;                       // Stores session data as array.
     public $timer = array();
     public $user;
-<<<<<<< HEAD
     public $navigation;
     
     public $installed = true;
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    
    /**-------------------------------------------------------------------------
     * Constructor
@@ -95,12 +92,9 @@ class CNeurosis implements ISingleton {
       
       if(isset($this->config['database'][0]['dsn'])) {                    // Database to fetch defined in 'config.php'.
         $this->db = new CMDatabase($this->config['database'][0]['dsn']);  // Database to fetch defined in 'config.php'.
-<<<<<<< HEAD
         if(filesize($this->config['database'][0]['path']) == 0) {          // Sees if the database has been initialized by looking at filesize.
           $this->installed = false;  
         }
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       }
       
       /*--------------------------------------------------------------------------
@@ -118,7 +112,6 @@ class CNeurosis implements ISingleton {
       //-along $ne to CMUser, who sends it to its parent which is this class, CObject.
       // This allows us to get CMUser by both '$ne->user' and '$this->user'.
       $this->user = new CMUser($this);
-<<<<<<< HEAD
       
       /*--------------------------------------------------------------------------
         
@@ -126,8 +119,6 @@ class CNeurosis implements ISingleton {
         
       $this->navigation = new CNavigation($this);
       
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    }
     
    /**-------------------------------------------------------------------------
@@ -157,34 +148,19 @@ class CNeurosis implements ISingleton {
   public function FrontControllerRoute() {    
     /*--------------------------------------------------------------------------
       
-<<<<<<< HEAD
        Take current url and divide it in controller, method and parameters*/
       
     $this->request = new CRequest();
     $this->request->Init($this->config['base_url'], $this->config['routing'], $this->installed); // Initialize our CRequest, grab the request so we can use it.
     $controller = $this->request->controller;   // Get the information from CRequest into this class. Controller is class.
     $method     = $this->request->method;       // Method is class function.
-=======
-      Take current url and divide it in controller, method and parameters*/
-      
-    $this->request = new CRequest();            // Create $request and new it.
-    $this->request->Init($this->config['base_url'], $this->config['routing']); // Initialize our CRequest, grab the request so we can use it.
-    $controller = $this->request->controller;   // Get the information from CRequest into this class. Controller is class.
-    $method     = $this->request->method;       // Method is method.
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     $arguments  = $this->request->arguments;    // Arguments is the entire request, '/controller/method/' combined.
     
     
     /*--------------------------------------------------------------------------
       
       Is the controller enabled in 'config.php'?*/
-<<<<<<< HEAD
 
-=======
-    /**
-     *(By controller we're talking about a class.)
-     */
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     $controllerExists       = isset($this->config['controllers'][$controller]);
     $controllerEnabled      = false;
     $className              = false;
@@ -197,37 +173,17 @@ class CNeurosis implements ISingleton {
       $classExists           = class_exists($className);
     }
     
-<<<<<<< HEAD
     /**-------------------------------------------------------------------------
      * Check if controller has a callable method in the controller class, if then call it
      *--------------------------------------------------------------------------
      *
-=======
-    /**=========================================================================
-     * 
-     * Check if controller has a callable method in the controller class, if then call it
-     *
-     *==========================================================================
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
      * Reflection coding! This is utilized for APIs and such as it lets us load plugins (classes).
      * 'ReflectionClass, hasMethod, implementsInterface, newInstance, getMethod, invokeArgs' are all Reflection based.
      * This is where we create the class as an ReflectionClass.
      * 'implementsInterface' makes the check that our class is using an interface pattern,
      *-and if the class doesn't implement it correctly it'll throw an error.
      */
-<<<<<<< HEAD
 
-=======
-/*     if(!$controllerExists) {
-      die('Cannot find controller.');
-    }
-    if(!$controllerEnabled) {
-      die('No controller enabled.');
-    }
-    if(!$classExists) {
-      die('Cannot find class.');
-    } */
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     if($controllerExists && $controllerEnabled && $classExists) {
       $rc = new ReflectionClass($className);                                  // New a Reflection class out of our inputted class.
       if($rc->implementsInterface('IController')) {
@@ -250,10 +206,7 @@ class CNeurosis implements ISingleton {
     else {
       die('404. Page is not found.');
     }
-<<<<<<< HEAD
     
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
     
   /**=========================================================================
@@ -288,19 +241,6 @@ class CNeurosis implements ISingleton {
     $themePath  = NEUROSIS_INSTALL_PATH . '/' . $this->config['theme']['path'];
     $themeUrl   = $this->request->base_url    . $this->config['theme']['path'];
     
-<<<<<<< HEAD
-=======
-    /***************************************************************************
-      --DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--
-    /* // Deprecated and replaced when we're introducing parent-themes.
-    $themeName    = $this->config['theme']['name']; //
-    $themePath    = NEUROSIS_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl = $this->request->base_url . "themes/{$themeName}";     // Fetches the 'base_url' defined in 'CRequest.php' which contains the correct url for our page.
-    $themeParentUrl = $this->request->base_url . "themes/{$themeName}";     // Fetches the 'base_url' defined in 'CRequest.php' which contains the correct url for our page.
-    --DEPRECATED--^--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--
-    ***************************************************************************/
-    
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     /*--------------------------------------------------------------------------
       
       Is there a parent theme?*/
@@ -371,11 +311,7 @@ class CNeurosis implements ISingleton {
     
     if(is_array($this->config['theme']['menu_to_region'])) {
       foreach($this->config['theme']['menu_to_region'] as $key => $val) {
-<<<<<<< HEAD
         $this->views->AddString($this->navigation->DrawMenu($key), null, $val);
-=======
-        $this->views->AddString($this->DrawMenu($key), null, $val);
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
       }
     }
     
@@ -392,40 +328,6 @@ class CNeurosis implements ISingleton {
       throw new Exception('No such template file.');
     }
   }
-<<<<<<< HEAD
-=======
-   /***************************************************************************
-     --DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--
-    /*--------------------------------------------------------------------------
-      
-      Add stylesheet path to the $ne->data array
-    
-    $this->data['stylesheet'] = "{$themeUrl}/".$this->config['theme']['stylesheet'];  // Note: Used for the 'themes/grid' theme and the LESS framework. Will parse CSS for us.
-    /*--------------------------------------------------------------------------
-      
-      Include the global 'shared_functions.php' and the 'functions.php' that are part of the theme
-    
-    $ne = &$this;
-    include(NEUROSIS_INSTALL_PATH . '/themes/shared_functions.php');
-    $functionsPath = "{$themePath}/functions.php";
-    if(is_file($functionsPath)) {
-      include $functionsPath;
-    }
-    
-    /*--------------------------------------------------------------------------
-      
-      Extract $ne->data and $ne->view->data to own variables and handover to the template file
-    
-    extract($this->data);     
-    extract($this->views->GetData());
-    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
-    include("{$themePath}/{$templateFile}");
-  }
-    --DEPRECATED--^--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--
-    ***************************************************************************/
-  
-  
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
 /**=========================================================================
  * 
@@ -441,7 +343,6 @@ class CNeurosis implements ISingleton {
    *--------------------------------------------------------------------------
    */
 	public function RedirectTo($urlOrController=null, $method=null, $arguments=null) {
-<<<<<<< HEAD
       if(isset($this->config['debug']['db-num-queries']) && $this->config['debug']['db-num-queries'] && isset($this->db)) {
         $this->session->SetFlash('database_numQueries', $this->db->GetNumQueries());
       }
@@ -454,21 +355,6 @@ class CNeurosis implements ISingleton {
       $this->session->StoreInSession();
       header('Location: ' . $this->CreateUrl($urlOrController, $method, $arguments));
   }
-=======
-    $ne = CNeurosis::Instance();
-    if(isset($this->config['debug']['db-num-queries']) && $this->config['debug']['db-num-queries'] && isset($this->db)) {
-      $this->session->SetFlash('database_numQueries', $this->db->GetNumQueries());
-    }
-    if(isset($this->config['debug']['db-queries']) && $this->config['debug']['db-queries'] && isset($this->db)) {
-      $this->session->SetFlash('database_queries', $this->db->GetQueries());
-    }
-    if(isset($this->config['debug']['timer']) && $this->config['debug']['timer']) {
-$this->session->SetFlash('timer', $ne->timer);
-    }
-    $this->session->StoreInSession();
-    header('Location: ' . $this->request->CreateUrl($urlOrController, $method, $arguments));
-    }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
   /**-------------------------------------------------------------------------
    * Redirect to a method within the current controller. Defaults to index-method. Uses RedirectTo().
@@ -478,7 +364,6 @@ $this->session->SetFlash('timer', $ne->timer);
    * TBA Why is this named 'RedirectToController' when in fact it access a method from our current controller? (IAmAtThisController::MethodIWant)
    * Should be named RedirectToMethod...
    */
-<<<<<<< HEAD
   public function RedirectToMethod($method=null, $arguments=null) {
       // $method = isset($method) ? $method : $this->request->method;
       $this->RedirectTo($this->request->controller, $method, $arguments);
@@ -495,11 +380,6 @@ $this->session->SetFlash('timer', $ne->timer);
     $method = is_null($method) ? $this->request->method : null;
     $this->RedirectTo($this->CreateUrl($controller, $method, $arguments));
   }
-=======
-  public function RedirectToController($method=null, $arguments=null) {
-      $this->RedirectTo($this->request->controller, $method, $arguments);
-    }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 
   /**-------------------------------------------------------------------------
    * Save a message in the session. Uses $this->session->AddMessage()
@@ -520,21 +400,6 @@ $this->session->SetFlash('timer', $ne->timer);
     $this->session->AddMessage($type, $message);
   }
 
-<<<<<<< HEAD
-=======
- /**-------------------------------------------------------------------------
-  * Redirect to a controller and method. Uses RedirectTo().
-  *--------------------------------------------------------------------------
-  *
-  * @param string controller name the controller or null for current controller.
-  * @param string method name the method, default is current method.
-  */
-  public function RedirectToControllerMethod($controller=null, $method=null, $arguments=null) {
-  $controller = is_null($controller) ? $this->request->controller : null;
-  $method = is_null($method) ? $this->request->method : null;	
-      $this->RedirectTo($this->request->CreateUrl($controller, $method, $arguments));
-  }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
  /**-------------------------------------------------------------------------
   * Create an url. Uses $this->request->CreateUrl()
@@ -548,39 +413,5 @@ $this->session->SetFlash('timer', $ne->timer);
     return $this->request->CreateUrl($urlOrController, $method, $arguments);
   }
   
-<<<<<<< HEAD
   
-=======
-/**=========================================================================
- * 
- * Neurosis menu functions (should be moved to CNavigation later on)
- *
- *==========================================================================
- * 
- * 
- */
-  
-  /**-------------------------------------------------------------------------
-   * Draw HTML for a menu defined in $ne->config['menus']
-   *--------------------------------------------------------------------------
-   *
-   * @param $menu string then key to the menu in the config-array.
-   * @returns string with the HTML representing the menu.
-   */
-  public function DrawMenu($menu) {
-    $items = null;
-    if(isset($this->config['menus'][$menu])) {    // E.g. config['menus']['site-navbar'], contains a list of menu items.
-      foreach($this->config['menus'][$menu] as $val) {
-        $selected = null;
-        if($val['url'] == $this->request->request || $val['url'] == $this->request->routed_from) {
-          $selected = " class='selected'";
-        }
-        $items .= "<li><a {$selected} href='" . $this->CreateUrl($val['url']) . "'>{$val['label']}</a></li>\n";
-      }
-    } else {
-      throw new Exception('No such menu.');
-    }     
-    return "<ul class='menu {$menu}'>\n{$items}</ul>\n";
-  }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 }

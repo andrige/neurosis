@@ -1,11 +1,8 @@
 <div class='box'>
 <h4>All modules</h4>
 <p>All Neurosis modules.<br/>This list is created in <code>CMModules</code>.</p>
-<<<<<<< HEAD
 <p>Click these links to read more about the modules and some documentation 
 about the functions they hold.</p>
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 <ul>
 <?php foreach($modules as $module): ?>
   <li><a href='<?=create_url('modules/view/'.$module['name'])?>'><?=$module['name']?></a></li>

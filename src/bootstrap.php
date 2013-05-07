@@ -100,11 +100,7 @@ function makeClickable($text) {
  *--------------------------------------------------------------------------
  */
 function exception_handler($exception) {
-<<<<<<< HEAD
   echo "Neurosis: You dun' goofed. Uncaught exception: <p>" . $exception->getMessage() . "</p><pre>" . $exception->getTraceAsString(), "</pre>";
-=======
-  echo "Neurosis: Uncaught exception: <p>" . $exception->getMessage() . "</p><pre>" . $exception->getTraceAsString(), "</pre>";
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 }
 set_exception_handler('exception_handler');
 
@@ -122,10 +118,7 @@ function bbcode2html($text) {
     '/\[b\](.*?)\[\/b\]/is',
     '/\[i\](.*?)\[\/i\]/is',
     '/\[u\](.*?)\[\/u\]/is',
-<<<<<<< HEAD
     '/\[c\](.*?)\[\/c\]/is',
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     '/\[img\](https?.*?)\[\/img\]/is',
     '/\[url\](https?.*?)\[\/url\]/is',
     '/\[url=(https?.*?)\](.*?)\[\/url\]/is'
@@ -134,10 +127,7 @@ function bbcode2html($text) {
     '<strong>$1</strong>',
     '<em>$1</em>',
     '<u>$1</u>',
-<<<<<<< HEAD
     '<code>$1</code>',
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     '<img src="$1" />',
     '<a href="$1">$1</a>',
     '<a href="$1">$2</a>'

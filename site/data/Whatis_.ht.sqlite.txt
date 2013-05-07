@@ -3,10 +3,6 @@
  * .ht.sqlite
   
   Files that begin with '.ht' are protected by the webserver Apache.
-<<<<<<< HEAD
-=======
-  It's most likely unique to bth.se but still useful to know.
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
   It's of course important that you double check that this is actually the case.
   For more ways of protecting your database, see:

@@ -5,11 +5,7 @@
  *
  *==========================================================================
  * I failed pretty badly here. You must remember that all references to $ne
-<<<<<<< HEAD
  *-must be rerouted in CObject.php! That's why we couldn't use 'RedirectToMethod()'
-=======
- *-must be rerouted in CObject.php! That's why we couldn't use 'RedirectToController()'
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
  *-as it wasn't present in CObject (it does now of course, among many other "wrappers").
  * 
  * @package NeurosisCore
@@ -29,10 +25,7 @@ class CCUser extends CObject implements IController {
    */
   public function __construct() {
     parent::__construct();
-<<<<<<< HEAD
     $this->navigation->OverrideNavbar('user-manager-menu');
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
   
   
@@ -48,7 +41,6 @@ class CCUser extends CObject implements IController {
     ),'primary');
   }
   
-<<<<<<< HEAD
   /** ------------------------------------------------------------------------
    * Show list of users for administration
    *--------------------------------------------------------------------------
@@ -74,19 +66,13 @@ class CCUser extends CObject implements IController {
                 'groups'=>$this->user->GetAllGroups(),
                 ),'fullwidth');
   }
-=======
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   /**-------------------------------------------------------------------------
    * Init the user database
    *--------------------------------------------------------------------------
    */
   public function Init() {
     $this->user->Init();
-<<<<<<< HEAD
     $this->RedirectToMethod();
-=======
-    $this->RedirectToController();
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
   
   /**-------------------------------------------------------------------------
@@ -99,21 +85,13 @@ class CCUser extends CObject implements IController {
     $form = new CFormUserLogin($this);
     if($form->Check() === false) {
       $this->AddMessage('notice', 'You must fill in acronym and password.');
-<<<<<<< HEAD
       $this->RedirectToMethod('login');
-=======
-      $this->RedirectToController('login');
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
     $this->views->SetTitle('Login')
                 ->AddInclude(__DIR__ . '/login.tpl.php', array(
                   'login_form' => $form,
                   'allow_create_user' => CNeurosis::Instance()->config['create_new_users'],
-<<<<<<< HEAD
                   'create_user_url' => $this->CreateUrl(null, 'createuser'),
-=======
-                  'create_user_url' => $this->CreateUrl(null, 'create'),
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
                 ),'primary');
   }
   
@@ -125,26 +103,15 @@ class CCUser extends CObject implements IController {
   public function DoLogin($form) {
     if($this->user->Login($form['acronym']['value'], $form['password']['value'])) {
       $this->AddMessage('success', "Welcome {$this->user['name']}.");
-<<<<<<< HEAD
       $this->RedirectToMethod('profile');
     } else {
       $this->AddMessage('notice', "Failed to login, user does not exist or password does not match.");
       $this->RedirectToMethod('login');
-=======
-      $this->RedirectToController('profile');
-    } else {
-      $this->AddMessage('notice', "Failed to login, user does not exist or password does not match.");
-      $this->RedirectToController('login');
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
   }
   
   /**-------------------------------------------------------------------------
-<<<<<<< HEAD
    * NEW v209: View and edit your own user profile
-=======
-   * NEW v209: View and edit user profile
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
    *--------------------------------------------------------------------------
    */
    
@@ -152,16 +119,10 @@ class CCUser extends CObject implements IController {
    
   public function Profile() {
     $form = new CFormUserProfile($this, $this->user);
-<<<<<<< HEAD
     // echo print_r($this->user);
     if($form->Check() === false) {
       $this->AddMessage('notice', 'Some fields did not validate and the form could not be processed.');
       $this->RedirectToMethod('profile');
-=======
-    if($form->Check() === false) {
-      $this->AddMessage('notice', 'Some fields did not validate and the form could not be processed.');
-      $this->RedirectToController('profile');
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
     }
 
     $this->views->SetTitle('User Profile')
@@ -177,7 +138,6 @@ class CCUser extends CObject implements IController {
    *--------------------------------------------------------------------------
    * Very similar to Login(), basically just a rehash.
    */
-<<<<<<< HEAD
   public function CreateUser() {
     $form = new CFormUserCreate($this);   // Create the class which holds the form template.
     if($form->Check() === false) {        // If the user failed upon posting the form, it'll return to /user/create/ but this time the Check will return false, thus prompting an error message.
@@ -271,16 +231,6 @@ class CCUser extends CObject implements IController {
                   'profile_form'=>$form->GetHTML(),
                   'group_id'=>$groupId,
                 ),'fullwidth');
-=======
-  public function Create() {
-    $form = new CFormUserCreate($this);   // Create the class which holds the form template.
-    if($form->Check() === false) {        // If the user failed upon posting the form, it'll return to /user/create/ but this time the Check will return false, thus prompting an error message.
-      $this->AddMessage('notice', 'You must fill in all values.');
-      $this->RedirectToController('Create');
-    }
-    $this->views->SetTitle('Create user')
-                ->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML())); // View the template file and the form.
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
   
   /**-------------------------------------------------------------------------
@@ -289,24 +239,15 @@ class CCUser extends CObject implements IController {
    *
    * @param $form CForm the form that was submitted
    */
-<<<<<<< HEAD
   public function DoCreateUser($form) {   
     if($form['password']['value'] != $form['password1']['value'] || empty($form['password']['value']) || empty($form['password1']['value'])) {
       $this->AddMessage('error', 'Password does not match or is empty.');
       $this->RedirectToMethod('create');
     } else if($this->user->CreateUser($form['acronym']['value'],
-=======
-  public function DoCreate($form) {   
-    if($form['password']['value'] != $form['password1']['value'] || empty($form['password']['value']) || empty($form['password1']['value'])) {
-      $this->AddMessage('error', 'Password does not match or is empty.');
-      $this->RedirectToController('create');
-    } else if($this->user->Create($form['acronym']['value'],
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
                            $form['password']['value'],
                            $form['name']['value'],
                            $form['email']['value']
                            )) {
-<<<<<<< HEAD
       $this->AddMessage('success', "Welcome {$this->user['name']}. You have successfully created a new account.");
       $this->user->Login($form['acronym']['value'], $form['password']['value']);
       $this->RedirectToMethod('profile');
@@ -331,16 +272,6 @@ class CCUser extends CObject implements IController {
       $this->RedirectToMethod('creategroup');
     } 
   }
-=======
-      $this->AddMessage('success', "Welcome {$this->user['name']}. Your have successfully created a new account.");
-      $this->user->Login($form['acronym']['value'], $form['password']['value']);
-      $this->RedirectToController('profile');
-    } else {
-      $this->AddMessage('notice', "Failed to create an account.");
-      $this->RedirectToController('create');
-    }
-  }
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
   /**-------------------------------------------------------------------------
    * NEW v206: Change password
@@ -353,17 +284,12 @@ class CCUser extends CObject implements IController {
       $ret = $this->user->ChangePassword($form['password']['value']);               // You've written the same password twice so we'll change that password now. We'll see how it went as I'll return a boolean.
       $this->AddMessage($ret, 'Saved new password.', 'Failed updating password.');  // CSession::AddMessage(), 
     }
-<<<<<<< HEAD
     $this->RedirectToMethod('profile');
-=======
-    $this->RedirectToController('profile');
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   }
   
   /**-------------------------------------------------------------------------
    * NEW v206: Save updates to profile information
    *--------------------------------------------------------------------------
-<<<<<<< HEAD
   * @param $userId Set to save profile by ID rather than current login
   *
   */
@@ -400,30 +326,6 @@ class CCUser extends CObject implements IController {
       $this->RedirectToMethod('managegroup',$this->user['group_id']);
     }
   }
-=======
-   */
-  public function DoProfileSave($form) {
-    $this->user['name'] = $form['name']['value'];
-    $this->user['email'] = $form['email']['value'];
-    $ret = $this->user->Save();
-    $this->AddMessage($ret, 'Saved profile.', 'Failed saving profile.');
-    $this->RedirectToController('profile');
-  }
-   
-   /***************************************************************************
-     --DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--v--DEPRECATED--
-  // v203   
-  public function Profile() {                                       // This is accessed by the url as a method (just to remind you this).
-    $this->views->SetTitle('User Profile');                         // Set title of page.
-    $this->views->AddInclude(__DIR__ . '/profile.tpl.php', array(   // Add the view file. We send view-file and then the variables we want with it.
-                                                                    //-It is extracted in CViewContainer::AddInclude() into temporary variables.
-      'is_authenticated'=>$this->user->IsAuthenticated(),           // ...variable.
-      'user'=>$this->user->GetUserProfile(),                            // ...variable.
-    ));
-  }
-    --DEPRECATED--^--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--ʌ--DEPRECATED--
-    ***************************************************************************/
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
   
   /**-------------------------------------------------------------------------
    * Logout a user
@@ -431,7 +333,6 @@ class CCUser extends CObject implements IController {
    */
   public function Logout() {
     $this->user->Logout();
-<<<<<<< HEAD
     $this->RedirectToControllerMethod('index','index');
   }
   
@@ -491,10 +392,4 @@ class CCUser extends CObject implements IController {
   }
   
   
-=======
-    $this->RedirectToController();
-  }
-  
-
->>>>>>> 62c6a280ead8529bd9558ffe31a0e42cded6ca2f
 } 
