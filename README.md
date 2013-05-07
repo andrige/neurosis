@@ -8,10 +8,13 @@ Created for learning purposes, 2013-04 to 2013-05
  Installation
 
 1. Clone the framework using GitBash:
+
   a. Browse to the folder you wish to clone your project into by using these commands:
+  
     * ls                                              | Lists all objects in folder
     * cd folder                                       | Enter folder with name 'folder'
     * git clone git:github.com/andrige/neurosis.git   | Clone framework into folder
+    
   b. Files should download into your folder in GitBash.
   
   c. Move Neurosis in its entirety to your webserver.
@@ -39,14 +42,20 @@ Created for learning purposes, 2013-04 to 2013-05
  Modify theme and add blog, page
 
 1. In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme:
+
   a. Enable debug output texts.
+  
     i. E.g. set "$ne->config['debug']['display-neurosis'] = false;" to true.
+    
   b. Create new menus.
+  
     i. Look for '$ne->config['menus'] = array(' and the list beneath. To get started you can
         try adding/changing entries under the 'my-navbar'. Try adding this text:
         'login' => array('label'=>'Login','url'=>'user/login'),
+        
   c. Set logotype url, footer text, header title, the content of navigation menus.
       These under [d] are found at the bottom of the 'config.php' document.
+      
     i. You can change logo image by replacing the 'logo.png' in 'site/themes/neat' folder.
 
 2. You can change the look of the parent theme, 'grid', by using the admin functions.
