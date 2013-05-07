@@ -14,26 +14,24 @@ Created for learning purposes, 2013-04 to 2013-05
     * ls                                              | Lists all objects/sbufolders in folder
     * cd folder                                       | Enter folder with name 'folder'
     * git clone git:github.com/andrige/neurosis.git   | Clone framework into folder
-    
-  b. GitBash should download into your folder specified folder.
   
-  c. Move Neurosis in its entirety to your webserver.
+2. Move Neurosis in its entirety to your webserver.
       
-2. Set your access modifier (CHMOD) to 777 on the folder 'data' at 'site/data'.
+3. Set your access modifier (CHMOD) to 777 on the folder 'data' at 'site/data'.
     This is required to enable database (.ht.sqlite) to be created and written.
     
-3. You might need to change the file '.htaccess' in the root-folder and change the
+4. You might need to change the file '.htaccess' in the root-folder and change the
     line after "RewriteBase" to what is the real adress to your files, or to comment it 
     out by adding "#" at the start of the line. Some webhosts may rewrite the base of 
     the adress and thus you must adjust so Neurosis can still find the right location.
     
-4. Load website. It will redirect you to a install-page with a link. Press it.
+5. Load website. It will redirect you to a install-page with a link. Press it.
 
-5. Link will create database entries as well as example posts and users. 
+6. Link will create database entries as well as example posts and users. 
     You'll be logged in as user 'root'. You can login to root again under username
     'root' and password 'root'.
     
-6. Enjoy! This is a very modest framework, but you can now moderate webpage and 
+7. Enjoy! This is a very modest framework, but you can now moderate webpage and 
     begin to create content, moderate users and groups using the admin functions 
     available to you as admin.
 
