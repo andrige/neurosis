@@ -41,23 +41,24 @@ Created for learning purposes, 2013-04 to 2013-05
  Modify theme and add blog, page
 --------------------------------
 
-1. In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme:
+1. In the 'config.php' file in the 'site/' folder you'll find many useful fields to modify your theme:
 
-  a. Enable debug output texts.
-  
-    i. E.g. set "$ne->config['debug']['display-neurosis'] = false;" to true.
+  a. Enable debug output texts. E.g. set "$ne->config['debug']['display-neurosis'] = false;" to true.
     
-  b. Create new menus.
-  
-    i. Look for '$ne->config['menus'] = array(' and the list beneath. To get started you can
-        try adding/changing entries under the 'my-navbar'. Try adding this text:
-        'login' => array('label'=>'Login','url'=>'user/login'),
+  b. Create new menus. 
+     Look for '$ne->config['menus'] = array(' and the list beneath. To get started you can
+     try adding/changing entries under the 'my-navbar'. Try adding this text:
+     'login' => array('label'=>'Login','url'=>'user/login'),
         
   c. Set logotype url, footer text, header title, the content of navigation menus.
-      These under [d] are found at the bottom of the 'config.php' document.
+     You'll find these settings at the bottom of 'config.php'.
       
-    i. You can change logo image by replacing the 'logo.png' in 'site/themes/neat' folder.
+  d. You can change logo image by replacing the 'logo.png' in 'site/themes/neat' folder.
 
-2. You can change the look of the parent theme, 'grid', by using the admin functions.
-    These changes to the parent theme will carry over to your sub-theme which you can
-    find in the 'site/' folder. Visit the theme-page for more info.
+2. You can modify the existing theme by editing the file 'style.css' at 'site/themes/style.css'.
+
+3. You can change the look of the parent theme, 'grid', by using the admin functions.
+   These changes to the parent theme will carry over to your sub-theme which you can
+   find in the 'site/' folder. Be sure to set the folder 'themes/grid/' to CHMOD 777, and be 
+   wary that it's not entirely sure what causes it to work or not. One way is to try 
+   deleting the 'style.css' file and let the framework recompile a new one for you.
