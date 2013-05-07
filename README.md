@@ -3,16 +3,17 @@ NEUROSIS : CMF BASED ON THE LYDIA FRAMEWORK BY MIKAEL ROOS
 MODIFIED BY MARKUS LUNDBERG (www.andrige.com)
 Created for learning purposes, 2013-04 to 2013-05
 
-*--------------------------------
-* Installation
-*--------------------------------
+--------------------------------
 
-[1] Clone the framework using GitBash.
+ Installation
+
+[1] Clone the framework using GitBash:
   [a] Browse to the folder you wish to clone your project into by using these commands:
     [*] ls                                              | Lists all objects in folder
     [*] cd folder                                       | Enter folder with name 'folder'
     [*] git clone git:github.com/andrige/neurosis.git   | Clone framework into folder
   [b] Files should download into your folder in GitBash.
+  
   [c] Move Neurosis in its entirety to your webserver.
       
 [2] Set your access modifier (CHMOD) to 777 on the folder 'data' at 'site/data'.
@@ -33,11 +34,11 @@ Created for learning purposes, 2013-04 to 2013-05
     begin to create content, moderate users and groups using the admin functions 
     available to you as admin.
 
-*--------------------------------
-* Modify theme and add blog, page
-*--------------------------------
+--------------------------------
 
-[1] In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme.
+ Modify theme and add blog, page
+
+[1] In the 'config.php' file in 'site/' you'll find many useful fields to modify your theme:
   [a] Enable debug output texts.
     [i] E.g. set "$ne->config['debug']['display-neurosis'] = false;" to true.
   [b] Create new menus.
